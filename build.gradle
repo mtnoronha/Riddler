@@ -23,15 +23,13 @@ dependencies {
 	compile library.vraptor
 
 	compile library.flyway_core
-	compile library.commons_io
-	compile library.commons_fileupload
+	
+	compile library.javassist
 	compile library.javax_jstl
-	compile library.joda_time
-	compile library.commons_email
+
 	compile library.javax_servlet
 	compile library.javax_jsp
 	compile library.i18n
-	compile library.hibernate_validator
 	compile library.javax_validation	
 	
 	testCompile library.jmockito
