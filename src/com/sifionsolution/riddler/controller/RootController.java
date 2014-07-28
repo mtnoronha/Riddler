@@ -10,7 +10,4 @@ public class RootController {
 	public void index() {
 	}
 
-	@Path("/teste")
-	public void test() {
-	}
 }
