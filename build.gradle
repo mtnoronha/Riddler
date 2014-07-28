@@ -32,7 +32,8 @@ dependencies {
 	compile library.i18n
 	compile library.javax_validation	
 	compile library.validation	
-	
+	compile library.mysql_driver
+		
 	compile library.log4j
 	
 	testCompile library.jmockito
