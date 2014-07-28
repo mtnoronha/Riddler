@@ -22,6 +22,7 @@ dependencies {
 	compile library.eclipselink
 	compile library.vraptor
 
+	compile library.flyway_core
 	compile library.commons_io
 	compile library.commons_fileupload
 	compile library.javax_jstl
