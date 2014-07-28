@@ -31,6 +31,7 @@ dependencies {
 	compile library.javax_jsp
 	compile library.i18n
 	compile library.javax_validation	
+	compile library.validation	
 	
 	testCompile library.jmockito
 	testCompile library.junit
