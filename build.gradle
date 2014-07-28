@@ -33,6 +33,8 @@ dependencies {
 	compile library.javax_validation	
 	compile library.validation	
 	
+	compile library.log4j
+	
 	testCompile library.jmockito
 	testCompile library.junit
 }
