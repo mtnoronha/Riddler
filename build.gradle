@@ -1,0 +1,57 @@
+apply plugin: "java"
+apply plugin: "eclipse"
+apply plugin: 'eclipse-wtp'
+apply plugin: "maven"
+apply plugin: "war"
+
+apply from: "https://raw.githubusercontent.com/SifionSolution/rootGradle/master/root.gradle"
+
+group = "riddler"
+version = "1.0"
+
+
+repositories {
+	mavenCentral()	
+}
+
+dependencies {		    
+
+	compile library.inject
+	compile library.cdi
+	compile library.cdi_weld
+	compile library.eclipselink
+	compile library.vraptor
+
+	compile library.commons_io
+	compile library.commons_fileupload
+	compile library.javax_jstl
+	compile library.joda_time
+	compile library.commons_email
+	compile library.javax_servlet
+	compile library.javax_jsp
+	compile library.i18n
+	compile library.hibernate_validator
+	compile library.javax_validation	
+	
+	testCompile library.jmockito
+	testCompile library.junit
+}
+
+
+webAppDirName = 'WebContent'
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+        
+        resources {
+        	srcDir 'src'
+        }
+    }
+}
+
+ configurations.all { 
+     resolutionStrategy.cacheChangingModulesFor 0, 'seconds' 
+   } 
