@@ -1,5 +1,4 @@
-package br.com.caelum.vraptor.util;
-
+package com.sifionsolution.riddler.database;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -12,9 +11,9 @@ import br.com.caelum.vraptor.interceptor.SimpleInterceptorStack;
 import br.com.caelum.vraptor.validator.Validator;
 
 /**
- * An interceptor that manages Entity Manager Transaction. All requests are intercepted
- * and a transaction is created before execution. If the request has no erros, the transaction
- * will commited, or a rollback occurs otherwise.
+ * An interceptor that manages Entity Manager Transaction. All requests are
+ * intercepted and a transaction is created before execution. If the request has
+ * no erros, the transaction will commited, or a rollback occurs otherwise.
  * 
  * @author Lucas Cavalcanti
  */
@@ -28,10 +27,11 @@ public class JPATransactionInterceptor {
 	/**
 	 * @deprecated CDI eyes only.
 	 */
+	@Deprecated
 	protected JPATransactionInterceptor() {
 		this(null, null, null);
 	}
-	
+
 	@Inject
 	public JPATransactionInterceptor(EntityManager manager, Validator validator, MutableResponse response) {
 		this.manager = manager;
@@ -41,25 +41,25 @@ public class JPATransactionInterceptor {
 
 	@AroundCall
 	public void intercept(SimpleInterceptorStack stack) {
-		
+
 		addRedirectListener();
-		
+
 		EntityTransaction transaction = null;
 		try {
 			transaction = manager.getTransaction();
 			transaction.begin();
-			
+
 			stack.next();
-			
+
 			commit(transaction);
-			
+
 		} finally {
 			if (transaction != null && transaction.isActive()) {
 				transaction.rollback();
 			}
 		}
 	}
-	
+
 	private void commit(EntityTransaction transaction) {
 		if (!validator.hasErrors() && transaction.isActive()) {
 			transaction.commit();

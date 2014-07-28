@@ -1,4 +1,4 @@
-package br.com.caelum.vraptor.util;
+package com.sifionsolution.riddler.database;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Disposes;
@@ -17,8 +17,8 @@ import br.com.caelum.vraptor.environment.Environment;
  * @author OtÃ¡vio Garcia
  */
 public class EntityManagerFactoryCreator {
-	
-	@Inject 
+
+	@Inject
 	private Environment environment;
 
 	@ApplicationScoped
