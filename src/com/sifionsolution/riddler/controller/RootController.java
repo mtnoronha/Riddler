@@ -1,12 +1,16 @@
 package com.sifionsolution.riddler.controller;
 
 import br.com.caelum.vraptor.Controller;
-import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Path;
 
 @Controller
 public class RootController {
 
-	@Get("/")
+	@Path("/")
 	public void index() {
+	}
+
+	@Path("/teste")
+	public void test() {
 	}
 }
