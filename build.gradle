@@ -21,7 +21,7 @@ dependencies {
 	compile library.cdi_weld
 	compile library.eclipselink
 	compile library.vraptor
-
+	compile library.vraptor_javatime
 	compile library.flyway_core
 	
 	compile library.javassist
