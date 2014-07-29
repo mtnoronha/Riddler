@@ -12,7 +12,7 @@ Teste
 	<h1>${msg}</h1>
 </c:if>
 
-<form  action="${LinkTo[TesteController].save}" method="post">
+<form  action="${linkTo[TesteController].save}" method="post">
 	<input type="text" name="obj.id">
 	<input type="text" name="obj.test">
 	<input value="OK" type="submit">
