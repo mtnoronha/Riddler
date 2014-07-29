@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.servlet.ServletContext;
 
 import org.slf4j.Logger;
@@ -16,11 +17,9 @@ import com.sifionsolution.riddler.enums.Config;
 public class ApplicationService {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	private final ServletContext context;
 
-	public ApplicationService(ServletContext context) {
-		this.context = context;
-	}
+	@Inject
+	private ServletContext context;
 
 	public String getURI(String dir) {
 		if (dir == null)
