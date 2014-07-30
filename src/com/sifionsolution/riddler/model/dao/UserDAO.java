@@ -2,6 +2,7 @@ package com.sifionsolution.riddler.model.dao;
 
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
@@ -10,6 +11,7 @@ import com.sifionsolution.riddler.dao.parameters.HqlParameter;
 import com.sifionsolution.riddler.enums.Role;
 import com.sifionsolution.riddler.model.User;
 
+@RequestScoped
 public class UserDAO {
 
 	private final GenericDAO<Long, User> dao;
