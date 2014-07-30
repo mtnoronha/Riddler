@@ -24,6 +24,8 @@ dependencies {
 	compile library.vraptor_javatime
 	compile library.vraptor_shiro
 	
+	compile library.ssolution_commons
+	
 	compile library.flyway_core
 	
 	compile library.javassist
