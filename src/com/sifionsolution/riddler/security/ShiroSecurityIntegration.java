@@ -34,6 +34,12 @@ public class ShiroSecurityIntegration implements Permission {
 	}
 
 	private Set<String> toStringSet(List<Role> roles) {
-		return null;
+		Set<String> set = new HashSet<String>();
+
+		for (Role role : roles) {
+			set.add(role.getRole());
+		}
+
+		return set;
 	}
 }
