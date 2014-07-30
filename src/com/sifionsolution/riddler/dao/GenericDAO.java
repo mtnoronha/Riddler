@@ -39,13 +39,22 @@ public class GenericDAO<PK, T> {
 		return entityManager.createQuery(("FROM " + clazz.getName())).getResultList();
 	}
 
-	public List<?> findByHql(String hql, HqlParameter... params) {
+	public List<?> listByHql(String hql, HqlParameter... params) {
 		Query query = entityManager.createQuery(hql);
 
 		for (HqlParameter param : params)
 			param.apply(query);
 
 		return query.getResultList();
+	}
+
+	public Object uniqueResultByHql(String hql, HqlParameter... params) {
+		Query query = entityManager.createQuery(hql);
+
+		for (HqlParameter param : params)
+			param.apply(query);
+
+		return query.getSingleResult();
 	}
 
 }
