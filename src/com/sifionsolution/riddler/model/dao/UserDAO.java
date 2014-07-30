@@ -6,6 +6,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
+import org.apache.shiro.authc.credential.PasswordService;
+
 import com.sifionsolution.riddler.dao.GenericDAO;
 import com.sifionsolution.riddler.dao.parameters.HqlParameter;
 import com.sifionsolution.riddler.enums.Role;
@@ -15,9 +17,11 @@ import com.sifionsolution.riddler.model.User;
 public class UserDAO {
 
 	private final GenericDAO<Long, User> dao;
+	private final PasswordService passwordService;
 
 	@Inject
-	public UserDAO(EntityManager manager) {
+	public UserDAO(EntityManager manager, PasswordService passwordService) {
+		this.passwordService = passwordService;
 		dao = new GenericDAO<Long, User>(User.class, manager);
 	}
 
@@ -32,4 +36,9 @@ public class UserDAO {
 				new HqlParameter("username", username));
 	}
 
+	public void save() {
+		// TODO remember to get password and call:
+		passwordService.encryptPassword("pass");
+
+	}
 }
