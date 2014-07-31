@@ -3,6 +3,7 @@ apply plugin: "eclipse"
 apply plugin: 'eclipse-wtp'
 apply plugin: "maven"
 apply plugin: "war"
+apply plugin: 'lesscss'
 
 apply from: "https://raw.githubusercontent.com/SifionSolution/rootGradle/master/root.gradle"
 
@@ -43,6 +44,24 @@ dependencies {
 	testCompile library.jmockito
 	testCompile library.junit
 }
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'de.obqo.gradle:gradle-lesscss-plugin:1.0-1.3.3'
+    }
+}
+
+lesscss {
+    source = fileTree('WebContent/css') {
+        include 'style.less'
+    }
+    dest = 'WebContent/css'
+    compress = true
+}
+
 
 
 webAppDirName = 'WebContent'
