@@ -24,17 +24,17 @@
 					<form role="form" action="${linkTo[RegisterController].register}" method="post">
 						<div class="form-group">
 							<label for="name">${i18n.label.name}</label>
-							<input type="text" class="form-control" id="name" name="user.name" placeholder="${i18n.type.your.name}">
+							<input type="text" class="form-control" id="name" name="user.name" value="${user.name}">
 						</div>
 
 						<div class="form-group">
 							<label for="username">${i18n.label.username}</label>
-							<input type="text" class="form-control" id="username" name="user.username" placeholder="${i18n.type.your.username}">
+							<input type="text" class="form-control" id="username" name="user.username" value="${user.username}" >
 						</div>
 						
 						<div class="form-group">
 							<label for="email">${i18n.label.email}</label>
-							<input type="email" class="form-control" id="email" name="user.email" placeholder="${i18n.type.your.email}">
+							<input type="email" class="form-control" id="email" name="user.email" value="${user.email}">
 						</div>
 						
 						<div class="form-group">
