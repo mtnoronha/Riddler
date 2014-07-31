@@ -7,11 +7,11 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.security.annotation.Secured;
 
 @Secured
-@RequiresAuthentication
 @Controller
 public class ProfileController {
 
 	@Get("/perfil")
+	@RequiresAuthentication
 	public void index() {
 	}
 
