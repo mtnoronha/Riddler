@@ -1,5 +1,7 @@
 package com.sifionsolution.riddler.model;
 
+import static com.sifionsolution.riddler.enums.Role.USER;
+import static java.util.Arrays.asList;
 import static javax.persistence.EnumType.STRING;
 
 import java.util.List;
@@ -16,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import com.sifionsolution.riddler.enums.Role;
+import com.sifionsolution.riddler.model.dto.SignUpUser;
 
 @Entity
 @Table(name = "tb_user")
@@ -49,6 +52,15 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.roles = roles;
+	}
+
+	public void load(SignUpUser dto, String encrypted) {
+		name = dto.getName();
+		username = dto.getUsername();
+		email = dto.getEmail();
+		password = encrypted;
+
+		roles = asList(USER);
 	}
 
 	public Long getId() {

@@ -12,6 +12,7 @@ import com.sifionsolution.riddler.dao.GenericDAO;
 import com.sifionsolution.riddler.dao.parameters.HqlParameter;
 import com.sifionsolution.riddler.enums.Role;
 import com.sifionsolution.riddler.model.User;
+import com.sifionsolution.riddler.model.dto.SignUpUser;
 
 @RequestScoped
 public class UserDAO {
@@ -44,9 +45,12 @@ public class UserDAO {
 				new HqlParameter("username", username));
 	}
 
-	public void save() {
-		// TODO remember to get password and call:
-		passwordService.encryptPassword("pass");
+	public void register(SignUpUser dto) {
+		User user = new User();
+		String encrypted = passwordService.encryptPassword(dto.getPassword());
 
+		user.load(dto, encrypted);
+
+		dao.save(user);
 	}
 }
