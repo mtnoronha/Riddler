@@ -3,12 +3,10 @@ package com.sifionsolution.riddler.model.dto;
 public class SignInUser {
 	private final String username;
 	private final String password;
-	private final Boolean remember;
 
-	public SignInUser(String username, String password, Boolean remember) {
+	public SignInUser(String username, String password) {
 		this.username = username;
 		this.password = password;
-		this.remember = remember;
 	}
 
 	public String getUsername() {
@@ -17,10 +15,6 @@ public class SignInUser {
 
 	public String getPassword() {
 		return password;
-	}
-
-	public Boolean getRemember() {
-		return remember;
 	}
 
 }
