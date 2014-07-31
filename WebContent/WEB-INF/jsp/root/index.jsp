@@ -11,7 +11,7 @@
 	
 	<body>
 		<div class="container">
-			<div class="riddle jumbotron">
+			<div class="riddle jumbotron text-center">
 				The riddle will be displayed here
 			</div>
 			
@@ -22,7 +22,7 @@
 							<label for="answer">${i18n.answer}</label>
 							<input type="text" class="form-control" id="answer" name="obj.answer" placeholder="${i18n.type.your.answer}">
 						</div>
-						<button type="submit" class="btn btn-lg btn-block btn-success">${i18n.btn.answer}</button>				
+						<button type="submit" class="btn btn-lg btn-block btn-danger">${i18n.btn.answer}</button>				
 					</form>
 				</div>
 			</div>
