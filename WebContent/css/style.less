@@ -1,6 +1,10 @@
 /* Colors definition */
 @body-color: #404040;
 @label-color: white;
+@btn-answer-color: #670000;
+@btn-answer-hover-color: darken(@btn-answer-color, 5%);
+@btn-answer-border-color: darken(@btn-answer-color, 3%);	
+@btn-answer-text-color: white;
 
 body{
 	background-color: @body-color;
@@ -12,4 +16,15 @@ body{
 
 label{
 	color: @label-color;
+}
+
+.btn-answer{
+	background-color: @btn-answer-color;
+	border-color: @btn-answer-border-color;
+	color: @btn-answer-text-color;	
+	
+	&:hover{
+		background-color: @btn-answer-hover-color;
+		color: @btn-answer-text-color;	
+	}
 }

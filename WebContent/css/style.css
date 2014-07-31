@@ -1,4 +1,5 @@
 body{background-color:#404040;}
 .riddle{margin-top:50px;}
 label{color:#ffffff;}
+.btn-answer{background-color:#670000;border-color:#580000;color:#ffffff;}.btn-answer:hover{background-color:#4e0000;color:#ffffff;}
 
