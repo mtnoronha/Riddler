@@ -6,11 +6,12 @@
 		<title>Riddler</title>
 		
 		<link href="<c:url value='/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
+		<link href="<c:url value='/css/style.css'/>" rel="stylesheet">
 	</head>
 	
 	<body>
 		<div class="container">
-			<div class="row">
+			<div class="riddle jumbotron">
 				The riddle will be displayed here
 			</div>
 			
