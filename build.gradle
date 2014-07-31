@@ -40,6 +40,7 @@ dependencies {
 	compile library.mysql_driver
 		
 	compile library.log4j
+	compile library.slf4j_simple
 	
 	testCompile library.jmockito
 	testCompile library.junit
