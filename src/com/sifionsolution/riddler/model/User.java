@@ -23,21 +23,24 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private final Long id;
+	private Long id;
 
-	private final String name;
+	private String name;
 
-	private final String username;
+	private String username;
 
-	private final String email;
+	private String email;
 
-	private final String password;
+	private String password;
 
 	@ElementCollection(targetClass = Role.class)
 	@CollectionTable(name = "tb_role", joinColumns = @JoinColumn(name = "id_user"))
 	@Column(name = "role")
 	@Enumerated(STRING)
-	private final List<Role> roles;
+	private List<Role> roles;
+
+	public User() {
+	}
 
 	public User(Long id, String name, String username, String email, String password, List<Role> roles) {
 		this.id = id;
