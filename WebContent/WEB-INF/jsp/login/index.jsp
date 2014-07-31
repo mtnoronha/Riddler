@@ -24,7 +24,7 @@
 					<form role="form" action="${linkTo[LoginController].login}" method="post">
 						<div class="form-group">
 							<label for="username">${i18n.label.username}</label>
-							<input type="text" class="form-control" id="username" name="user.username" placeholder="${i18n.type.your.username}">
+							<input type="text" class="form-control" id="username" name="user.username">
 						</div>
 						<div class="form-group">
 							<label for="password">${i18n.label.password}</label>
