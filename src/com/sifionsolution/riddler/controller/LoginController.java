@@ -1,6 +1,9 @@
 package com.sifionsolution.riddler.controller;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
+import javax.validation.ValidationException;
+import javax.validation.constraints.NotNull;
 
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
@@ -14,6 +17,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.security.annotation.Secured;
+import br.com.caelum.vraptor.validator.Validator;
 
 import com.sifionsolution.riddler.model.dto.SignInUser;
 
@@ -27,6 +31,9 @@ public class LoginController {
 	@Inject
 	private Result result;
 
+	@Inject
+	private Validator validator;
+
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@RequiresGuest
@@ -36,10 +43,13 @@ public class LoginController {
 
 	@RequiresGuest
 	@Post("/login")
-	public void login(SignInUser user) {
+	public void login(@NotNull @Valid SignInUser user) {
+		validator.onErrorForwardTo(LoginController.class).index();
 		try {
 			currentUser.login(new UsernamePasswordToken(user.getUsername(), user.getPassword(), false));
 			result.redirectTo(RootController.class).index();
+		} catch (ValidationException e) {
+			throw e;
 		} catch (Exception e) {
 			logger.error("Login attempt unsuccessful", e);
 			result.redirectTo(this).index();
