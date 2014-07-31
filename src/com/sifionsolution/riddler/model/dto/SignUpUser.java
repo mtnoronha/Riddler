@@ -3,16 +3,16 @@ package com.sifionsolution.riddler.model.dto;
 import javax.validation.constraints.NotNull;
 
 public class SignUpUser {
-	@NotNull
+	@NotNull(message = "{empty.name}")
 	private final String name;
 
-	@NotNull
+	@NotNull(message = "{empty.username}")
 	private final String username;
 
-	@NotNull
+	@NotNull(message = "{empty.email}")
 	private final String email;
 
-	@NotNull
+	@NotNull(message = "{empty.password}")
 	private final String password;
 
 	public SignUpUser(String name, String username, String email, String password) {
