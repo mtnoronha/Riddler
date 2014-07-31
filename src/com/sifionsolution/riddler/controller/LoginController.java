@@ -44,7 +44,7 @@ public class LoginController {
 	@RequiresGuest
 	@Post("/login")
 	public void login(@NotNull @Valid SignInUser user) {
-		validator.onErrorForwardTo(LoginController.class).index();
+		validator.onErrorRedirectTo(LoginController.class).index();
 		try {
 			currentUser.login(new UsernamePasswordToken(user.getUsername(), user.getPassword(), false));
 			result.redirectTo(RootController.class).index();

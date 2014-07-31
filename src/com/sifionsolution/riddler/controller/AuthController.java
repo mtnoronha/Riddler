@@ -17,7 +17,7 @@ public class AuthController implements AuthorizationRestrictionListener {
 	@Override
 	public void onAuthorizationRestriction(AuthorizationException e) {
 		result.include("error", e.toString());
-		result.forwardTo(LoginController.class).index();
+		result.redirectTo(LoginController.class).index();
 	}
 
 }
