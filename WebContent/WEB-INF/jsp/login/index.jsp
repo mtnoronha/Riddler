@@ -13,6 +13,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
+					<c:if test="${errors != null}">
+						<div class="alert alert-danger" role="alert">
+							<c:forEach var="error" items="${errors}">
+							   ${error.message}<br />
+							</c:forEach>
+						</div>
+					</c:if>
+					
 					<form role="form" action="${linkTo[LoginController].login}" method="post">
 						<div class="form-group">
 							<label for="username">${i18n.label.username}</label>
