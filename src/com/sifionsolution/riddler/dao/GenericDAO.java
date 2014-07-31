@@ -3,6 +3,7 @@ package com.sifionsolution.riddler.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import com.sifionsolution.riddler.dao.parameters.HqlParameter;
@@ -54,7 +55,11 @@ public class GenericDAO<PK, T> {
 		for (HqlParameter param : params)
 			param.apply(query);
 
-		return query.getSingleResult();
+		try {
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 }
