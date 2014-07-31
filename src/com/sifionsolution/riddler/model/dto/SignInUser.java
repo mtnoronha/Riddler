@@ -1,7 +1,12 @@
 package com.sifionsolution.riddler.model.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class SignInUser {
+	@NotNull(message = "{empty.username}")
 	private final String username;
+
+	@NotNull(message = "{empty.password}")
 	private final String password;
 
 	public SignInUser(String username, String password) {
