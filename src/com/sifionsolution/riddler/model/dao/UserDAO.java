@@ -19,6 +19,14 @@ public class UserDAO {
 	private final GenericDAO<Long, User> dao;
 	private final PasswordService passwordService;
 
+	/*
+	 * CDI eyes only
+	 */
+	@Deprecated
+	public UserDAO() {
+		this(null, null);
+	}
+
 	@Inject
 	public UserDAO(EntityManager manager, PasswordService passwordService) {
 		this.passwordService = passwordService;
