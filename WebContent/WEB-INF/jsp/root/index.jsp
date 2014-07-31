@@ -6,7 +6,23 @@
 <title>Riddler</title>
 </head>
 <body>
- It worked?! :)
+	<div class="container">
+		<div class="row">
+			The riddle will be displayed here
+		</div>
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<form role="form">
+					<div class="form-group">
+						<label for="answer">${i18n.answer}</label>
+						<input type="text" class="form-control" id="answer" name="obj.answer" placeholder="${i18n.type.your.answer}">
+					</div>
+					<button type="submit" class="btn  btn-lg btn-block btn-success">${i18n.btn.answer}</button>				
+				</form>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>
