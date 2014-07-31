@@ -9,5 +9,5 @@ create table tb_user (
 create table tb_role(
 	role varchar(255) not null,
 	id_user bigint not null references tb_user(id),
-	primary key(feature,id_user)
+	primary key(role,id_user)
 );

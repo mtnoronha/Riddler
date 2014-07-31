@@ -35,7 +35,7 @@ public class User {
 
 	@ElementCollection(targetClass = Role.class)
 	@CollectionTable(name = "tb_role", joinColumns = @JoinColumn(name = "id_user"))
-	@Column(name = "feature")
+	@Column(name = "role")
 	@Enumerated(STRING)
 	private final List<Role> roles;
 
