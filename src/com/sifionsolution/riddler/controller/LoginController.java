@@ -35,7 +35,7 @@ public class LoginController {
 	@Post("/login")
 	public void login(SignInUser user) {
 		try {
-			currentUser.login(new UsernamePasswordToken(user.getUsername(), user.getPassword(), user.getRemember()));
+			currentUser.login(new UsernamePasswordToken(user.getUsername(), user.getPassword(), false));
 		} catch (UnknownAccountException e) {
 		} catch (IncorrectCredentialsException e) {
 		} catch (LockedAccountException e) {
