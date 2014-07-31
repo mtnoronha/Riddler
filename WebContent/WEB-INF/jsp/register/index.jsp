@@ -34,7 +34,7 @@
 						
 						<div class="form-group">
 							<label for="email">${i18n.label.email}</label>
-							<input type="email" class="form-control" id="email" name="user.username" placeholder="${i18n.type.your.email}">
+							<input type="email" class="form-control" id="email" name="user.email" placeholder="${i18n.type.your.email}">
 						</div>
 						
 						<div class="form-group">
