@@ -43,8 +43,10 @@ public class LoginController {
 
 		I18nMessage loginError = auth.authenticate(user);
 
-		if (loginError != null)
+		if (loginError != null) {
 			validator.add(loginError);
+			validator.onErrorRedirectTo(LoginController.class).index();
+		}
 
 		result.redirectTo(RootController.class).index();
 	}
