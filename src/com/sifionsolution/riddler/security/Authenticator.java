@@ -5,6 +5,8 @@ import javax.inject.Inject;
 
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import br.com.caelum.vraptor.validator.I18nMessage;
 
@@ -16,10 +18,13 @@ public class Authenticator {
 	@Inject
 	private Subject currentUser;
 
+	private static final Logger logger = LoggerFactory.getLogger(Authenticator.class);
+
 	public I18nMessage authenticate(SignInUser user) {
 		try {
 			currentUser.login(new UsernamePasswordToken(user.getUsername(), user.getPassword(), false));
 		} catch (Exception e) {
+			logger.debug("Log in error", e);
 			return new I18nMessage("", "login.unsuccessful");
 		}
 
