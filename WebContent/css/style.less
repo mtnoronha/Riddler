@@ -5,6 +5,7 @@
 @btn-answer-hover-color: darken(@btn-answer-color, 5%);
 @btn-answer-border-color: darken(@btn-answer-color, 3%);	
 @btn-answer-text-color: white;
+@login-border-color: black;
 
 body{
 	background-color: @body-color;
@@ -24,4 +25,13 @@ label{
 		background-color: @btn-answer-hover-color;
 		color: @btn-answer-text-color;	
 	}
+}
+
+.login-container{
+	margin: 0 auto;
+	float: none;
+	border-style: solid;
+	border-color: @login-border-color;
+	border-width: 1px;
+	padding: 10px;	
 }

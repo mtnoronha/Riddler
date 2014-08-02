@@ -12,7 +12,7 @@
 	<body>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-12">
+				<div class="col-lg-4 login-container">
 					<c:if test="${errors != null}">
 						<div class="alert alert-danger" role="alert">
 							<c:forEach var="error" items="${errors}">
