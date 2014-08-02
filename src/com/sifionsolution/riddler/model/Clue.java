@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.sifionsolution.riddler.model.dto.SaveableClue;
+
 @Entity
 @Table(name = "tb_clue")
 public class Clue {
@@ -35,6 +37,13 @@ public class Clue {
 		this.answer = answer;
 		this.clue = clue;
 		this.riddle = riddle;
+	}
+
+	public void load(SaveableClue clue, Riddle entity) {
+		id = clue.getId();
+		answer = clue.getAnswer();
+		this.clue = clue.getClue();
+		riddle = entity;
 	}
 
 	public Long getId() {
