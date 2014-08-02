@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.sifionsolution.riddler.model.dto.SaveableRiddle;
+
 @Entity
 @Table(name = "tb_riddle")
 public class Riddle {
@@ -43,6 +45,14 @@ public class Riddle {
 		this.reward = reward;
 		this.level = level;
 		this.clues = clues;
+	}
+
+	public void load(SaveableRiddle riddle) {
+		id = riddle.getId();
+		description = riddle.getDescription();
+		answer = riddle.getAnswer();
+		reward = riddle.getReward();
+		level = riddle.getLevel();
 	}
 
 	public Long getId() {
