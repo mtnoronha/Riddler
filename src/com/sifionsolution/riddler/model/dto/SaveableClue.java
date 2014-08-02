@@ -4,7 +4,7 @@ import javax.validation.constraints.NotNull;
 
 public class SaveableClue {
 
-	private final Integer id;
+	private final Long id;
 
 	@NotNull(message = "empty.answer")
 	private final String answer;
@@ -12,13 +12,13 @@ public class SaveableClue {
 	@NotNull(message = "empty.clue")
 	private final String clue;
 
-	public SaveableClue(Integer id, String answer, String clue) {
+	public SaveableClue(Long id, String answer, String clue) {
 		this.id = id;
 		this.answer = answer;
 		this.clue = clue;
 	}
 
-	public final Integer getId() {
+	public final Long getId() {
 		return id;
 	}
 
