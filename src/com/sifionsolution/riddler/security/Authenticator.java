@@ -3,8 +3,6 @@ package com.sifionsolution.riddler.security;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +14,7 @@ import com.sifionsolution.riddler.model.dto.SignInUser;
 public class Authenticator {
 
 	@Inject
-	private Subject currentUser;
+	private UserWeb userWeb;
 
 	private static final Logger logger = LoggerFactory.getLogger(Authenticator.class);
 
