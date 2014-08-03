@@ -1,7 +1,5 @@
 package com.sifionsolution.riddler.model;
 
-import static com.sifionsolution.riddler.enums.Role.USER;
-import static java.util.Arrays.asList;
 import static javax.persistence.EnumType.STRING;
 
 import java.util.List;
@@ -59,8 +57,6 @@ public class User {
 		username = dto.getUsername();
 		email = dto.getEmail();
 		password = encrypted;
-
-		roles = asList(USER);
 	}
 
 	public Long getId() {
