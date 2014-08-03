@@ -1,6 +1,7 @@
 package com.sifionsolution.riddler.model;
 
 import static javax.persistence.EnumType.STRING;
+import static javax.persistence.FetchType.LAZY;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class User {
 
 	private String password;
 
-	@ElementCollection(targetClass = Role.class)
+	@ElementCollection(targetClass = Role.class, fetch = LAZY)
 	@CollectionTable(name = "tb_role", joinColumns = @JoinColumn(name = "id_user"))
 	@Column(name = "role")
 	@Enumerated(STRING)
