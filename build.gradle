@@ -23,7 +23,6 @@ dependencies {
 	compile library.eclipselink
 	compile library.vraptor
 	compile library.vraptor_javatime
-	compile library.vraptor_brutauth
 	
 	compile library.ssolution_commons
 	
