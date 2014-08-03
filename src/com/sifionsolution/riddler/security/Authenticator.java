@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 
 import br.com.caelum.vraptor.validator.I18nMessage;
 
+import com.sifionsolution.riddler.model.User;
+import com.sifionsolution.riddler.model.dao.UserDAO;
 import com.sifionsolution.riddler.model.dto.SignInUser;
 
 @RequestScoped
@@ -16,11 +18,15 @@ public class Authenticator {
 	@Inject
 	private UserWeb userWeb;
 
+	@Inject
+	private UserDAO dao;
+
 	private static final Logger logger = LoggerFactory.getLogger(Authenticator.class);
 
 	public I18nMessage authenticate(SignInUser user) {
 		try {
-			currentUser.login(new UsernamePasswordToken(user.getUsername(), user.getPassword(), false));
+			User entity = dao.login(user);
+			userWeb.signIn(entity);
 		} catch (Exception e) {
 			logger.debug("Log in error", e);
 			return new I18nMessage("", "login.unsuccessful");
@@ -31,7 +37,7 @@ public class Authenticator {
 	}
 
 	public void logoff() {
-		currentUser.logout();
+		userWeb.signOut();
 	}
 
 }
