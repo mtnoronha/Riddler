@@ -4,6 +4,7 @@ import static com.sifionsolution.commons.util.ContentVerifyer.notEmpty;
 import static com.sifionsolution.riddler.enums.Role.LOGGED_IN;
 import static com.sifionsolution.riddler.enums.Role.LOGGED_OFF;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +16,10 @@ import com.sifionsolution.riddler.enums.Role;
 import com.sifionsolution.riddler.model.User;
 
 @SessionScoped
-public class UserWeb {
+public class UserWeb implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	private String username;
 	private String name;
 	private List<Role> roles = Arrays.asList(LOGGED_OFF);
