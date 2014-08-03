@@ -1,17 +1,16 @@
 package com.sifionsolution.riddler.controller;
 
-import org.apache.shiro.authz.annotation.RequiresAuthentication;
-
+import static com.sifionsolution.riddler.enums.Role.LOGGED_IN;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
-import br.com.caelum.vraptor.security.annotation.Secured;
 
-@Secured
+import com.sifionsolution.riddler.security.AllowTo;
+
 @Controller
+@AllowTo(LOGGED_IN)
 public class ProfileController {
 
 	@Get("/perfil")
-	@RequiresAuthentication
 	public void index() {
 	}
 

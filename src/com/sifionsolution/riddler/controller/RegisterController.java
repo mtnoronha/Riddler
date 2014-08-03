@@ -1,24 +1,23 @@
 package com.sifionsolution.riddler.controller;
 
+import static com.sifionsolution.riddler.enums.Role.LOGGED_OFF;
+
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-
-import org.apache.shiro.authz.annotation.RequiresGuest;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.security.annotation.Secured;
 import br.com.caelum.vraptor.validator.Validator;
 
 import com.sifionsolution.riddler.model.dao.UserDAO;
 import com.sifionsolution.riddler.model.dto.SignUpUser;
+import com.sifionsolution.riddler.security.AllowTo;
 
 @Controller
-@Secured
-@RequiresGuest
+@AllowTo(LOGGED_OFF)
 public class RegisterController {
 
 	@Inject
