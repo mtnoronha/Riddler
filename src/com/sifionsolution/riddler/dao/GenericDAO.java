@@ -37,7 +37,7 @@ public class GenericDAO<PK, T> {
 
 	@SuppressWarnings("unchecked")
 	public List<T> findAll() {
-		return entityManager.createQuery(("FROM " + clazz.getName())).getResultList();
+		return entityManager.createQuery(("FROM " + clazz.getName() + " obj")).getResultList();
 	}
 
 	public List<?> listByHql(String hql, HqlParameter... params) {
