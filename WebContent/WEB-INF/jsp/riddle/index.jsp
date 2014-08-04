@@ -3,7 +3,7 @@
 <html>
 	<head>
 
-		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Riddler</title>
 		
 		<link href="<c:url value='/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
@@ -35,19 +35,19 @@
 						</div>						
 
 						<div class="row">
-							<div class="col-lg-6">
+							<div class="col-lg-8">
 								<div class="form-group">
 									<label for="answer">${i18n.label.answer}</label>
 									<input type="text" class="form-control" id="answer" name="riddle.answer" value="${riddle.answer}">
 								</div>
 							</div>
-							<div class="col-lg-3">
+							<div class="col-lg-2">
 								<div class="form-group">
 									<label for="reward">${i18n.label.reward}</label>
 									<input type="text" class="form-control" id="reward" name="riddle.reward" value="${riddle.reward}">
 								</div>
 							</div>
-							<div class="col-lg-3">
+							<div class="col-lg-2">
 								<div class="form-group">
 									<label for="level">${i18n.label.level}</label>
 									<input type="text" class="form-control" id="level" name="riddle.level" value="${riddle.level}">
