@@ -14,12 +14,13 @@ $(document).ready(function(){
 			return this.container.find("tr");
 		},
 		template: function(answerText, clueText){
+			var id = $('<td>');
 			var answer = $('<td>').html(answerText);
 			var clue = $('<td>').html(clueText);
 			
 			var tr = $('<tr>');
 
-			tr.append(answer).append(clue);
+			tr.append(id).append(answer).append(clue);
 			
 			return tr;
 		}		
@@ -37,23 +38,24 @@ $(document).ready(function(){
 			   var self = $(this);
 			   var values = self.find('td');
 			   
-				var answerText = $(values[0]).text();
-				var clueText =  $(values[1]).text();
+				var idText = $(values[0]).text();
+			   	var answerText = $(values[1]).text();
+				var clueText =  $(values[2]).text();
 							
+				var idName = "clues["+index+"].id";
 				var answerName = "clues["+index+"].answer"; 
 				var clueName = "clues["+index+"].clue";				
 				
+				that.add(that.template(idName, idText));
 				that.add(that.template(answerName, answerText));
 				that.add(that.template(clueName, clueText));			
-			});
-			
+			});			
 		},
 		template: function(name, value){
 			return $("<input>").attr('type', 'hidden').attr('value', value).attr('name', name);		
 		}
-	}
-	
-	
+	};
+		
 	var	addBtn = $('#btnAdd');
 	
 	var answerField = $("#clueAnswer");
@@ -85,14 +87,7 @@ $(document).ready(function(){
 			return false;
 		}
 
-
-		formControl.addClues(cluesArray);
-
-		//TODO remove this, test only
-		e.preventDefault();
-		return false;
-		
-		
+		formControl.addClues(cluesArray);		
 	});
 	
 });
