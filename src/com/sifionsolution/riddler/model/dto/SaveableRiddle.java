@@ -1,24 +1,24 @@
 package com.sifionsolution.riddler.model.dto;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 public class SaveableRiddle {
 
 	private Long id;
 
-	@NotNull(message = "empty.description")
+	@NotNull(message = "{empty.description}")
 	private String description;
 
-	@NotNull(message = "empty.answer")
+	@NotNull(message = "{empty.answer}")
 	private String answer;
 
-	@NotNull(message = "empty.reward")
-	@Size(min = 1, message = "invalid.reward")
+	@NotNull(message = "{empty.reward}")
+	@Min(value = 1, message = "{invalid.reward}")
 	private Integer reward;
 
-	@NotNull(message = "empty.level")
-	@Size(min = 0, message = "invalid.level")
+	@NotNull(message = "{empty.level}")
+	@Min(value = 0, message = "{invalid.level}")
 	private Integer level;
 
 	public SaveableRiddle(Long id, String description, String answer, Integer reward, Integer level) {
