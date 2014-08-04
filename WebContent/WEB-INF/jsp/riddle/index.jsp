@@ -83,6 +83,7 @@
 									<table class="table table-striped">
 										<thead>
 											<tr>
+												<th>${i18n.label.id}</th>
 												<th>${i18n.label.answer}</th>
 												<th>${i18n.label.clue}</th>
 											</tr>											
@@ -90,6 +91,7 @@
 										<tbody id="clueTableContent">
 											<c:forEach var="clue" items="${clues}">
 												<tr>
+													<td>${clue.id}</td>
 													<td>${clue.answer}</td>
 													<td>${clue.clue}</td>
 												</tr>
