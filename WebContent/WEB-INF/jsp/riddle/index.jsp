@@ -60,6 +60,26 @@
 							<div class="col-lg-12">
 								
 								<div class="well well-small">
+									<div class="row">
+										<div class="col-lg-2">
+											<div class="form-group">
+												<label for="clueAnswer">${i18n.label.answer}</label>
+												<input type="text" class="form-control" id="clueAnswer">
+											</div>
+										</div>
+										<div class="col-lg-9">
+											<div class="form-group">
+												<label for="clueClue">${i18n.label.Clue}</label>
+												<input type="text" class="form-control" id="clueClue">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-1">
+											<button id="btnAdd" type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> ${i18n.btn.addClue}</button>
+										</div>
+									</div>
+									<hr>
 									<table class="table table-striped">
 										<thead>
 											<tr>
@@ -67,7 +87,7 @@
 												<th>${i18n.label.clue}</th>
 											</tr>											
 										</thead>
-										<tbody>
+										<tbody id="clueTableContent">
 											<c:forEach var="clue" items="${clues}">
 												<tr>
 													<td>${clue.answer}</td>
@@ -86,6 +106,6 @@
 			</div>
 		</div>
 		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<script src="<c:url value='/bootstrap/js/bootstrap.min.js'/>"></script>
+		<script src="<c:url value='/js/riddle/index.js'/>"></script>
 	</body>
 </html>
