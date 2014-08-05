@@ -10,9 +10,11 @@ $(document).ready(function(){
 		add: function(answer,clue){
 			this.container.append(this.template( answer,clue));
 		},
+		
 		get: function(){
 			return this.container.find("tr");
 		},
+		
 		replaceWithInput: function(row){
 			if(row.find('input').length > 0){
 				return;
@@ -31,6 +33,7 @@ $(document).ready(function(){
 					
 			row.append(this.buttonTemplate(row));
 		},
+		
 		replaceWithText: function(row){
 			var values = $(row).find('td');		
 			
@@ -46,6 +49,7 @@ $(document).ready(function(){
 
 			btn.remove();
 		},
+		
 		template: function(answerText, clueText){
 			var id = $('<td>');
 			var answer = $('<td>').html(answerText);
@@ -57,13 +61,15 @@ $(document).ready(function(){
 			
 			return tr;
 		},
+		
 		inputTemplate: function(value){
 			return  $('<td>').append($("<input>").attr('type', 'text').attr('value', value).addClass('form-control'));	
 		},
+		
 		buttonTemplate: function(row){
 			var that = this;
 			
-			var btn = $('<button>').attr('type','button').addClass('btn btn-success').html('${i18n.btn.edit}');
+			var btn = $('<button>').attr('type','button').addClass('btn btn-success').html($('<span>').addClass("glyphicon glyphicon-pencil"));
 			
 			btn.on('click', function(e){
 				e.stopPropagation();
