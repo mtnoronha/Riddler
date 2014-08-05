@@ -8,10 +8,43 @@ $(document).ready(function(){
 		container: $('#clueTableContent'),
 
 		add: function(answer,clue){
-			this.container.append(this.template(answer,clue));
+			this.container.append(this.template( answer,clue));
 		},
 		get: function(){
 			return this.container.find("tr");
+		},
+		replaceWithInput: function(row){
+			if(row.find('input').length > 0){
+				return;
+			}
+			
+			var values = row.find('td');		
+					
+			var answer = $(values[1]);
+			var clue = $(values[2]);
+			
+			var answerText = answer.text();
+			var clueText =  clue.text();
+			
+			answer.replaceWith(this.inputTemplate(answerText));
+			clue.replaceWith(this.inputTemplate(clueText));		
+					
+			row.append(this.buttonTemplate(row));
+		},
+		replaceWithText: function(row){
+			var values = $(row).find('td');		
+			
+			var answer = $(values[1]);
+			var clue = $(values[2]);
+			var btn = $(values[3]);
+						
+			var answerText = answer.find('input').val();
+			var clueText =  clue.find('input').val();
+			
+			answer.replaceWith($('<td>').html(answerText));
+			clue.replaceWith($('<td>').html(clueText));			
+
+			btn.remove();
 		},
 		template: function(answerText, clueText){
 			var id = $('<td>');
@@ -23,7 +56,22 @@ $(document).ready(function(){
 			tr.append(id).append(answer).append(clue);
 			
 			return tr;
-		}		
+		},
+		inputTemplate: function(value){
+			return  $('<td>').append($("<input>").attr('type', 'text').attr('value', value).addClass('form-control'));	
+		},
+		buttonTemplate: function(row){
+			var that = this;
+			
+			var btn = $('<button>').attr('type','button').addClass('btn btn-success').html('${i18n.btn.edit}');
+			
+			btn.on('click', function(e){
+				e.stopPropagation();
+				that.replaceWithText(row);
+			});
+			
+			return $('<td>').append(btn);
+		}
 	};
 
 	var formControl = {
@@ -50,10 +98,10 @@ $(document).ready(function(){
 				that.add(that.template(answerName, answerText));
 				that.add(that.template(clueName, clueText));			
 			});			
-		},
+		},		
 		template: function(name, value){
 			return $("<input>").attr('type', 'hidden').attr('value', value).attr('name', name);		
-		}
+		}		
 	};
 		
 	var	addBtn = $('#btnAdd');
@@ -75,6 +123,11 @@ $(document).ready(function(){
 		clues.add(answer, clue);
 		answerField.val("");
 		clueField.val("");
+	});
+	
+	clues.container.on('click', 'tr', function(){
+		var row = $(this);		
+		clues.replaceWithInput(row);
 	});
 	
 	formControl.form.on('submit', function(e){
