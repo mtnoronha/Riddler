@@ -1,7 +1,9 @@
 package com.sifionsolution.riddler.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.sifionsolution.riddler.model.dto.SaveableClue;
 import com.sifionsolution.riddler.model.dto.SaveableRiddle;
 
 @Entity
@@ -32,7 +35,7 @@ public class Riddle {
 	@Column(nullable = false)
 	private Integer level;
 
-	@OneToMany(mappedBy = "riddle")
+	@OneToMany(mappedBy = "riddle", cascade = CascadeType.ALL)
 	private List<Clue> clues;
 
 	public Riddle() {
@@ -47,7 +50,17 @@ public class Riddle {
 		this.clues = clues;
 	}
 
-	public void load(SaveableRiddle riddle) {
+	public void load(SaveableRiddle riddle, List<SaveableClue> clues) {
+		load(riddle);
+		this.clues = new ArrayList<Clue>();
+
+		for (SaveableClue clue : clues) {
+			Clue clueEntity = new Clue(clue.getId(), clue.getAnswer(), clue.getClue(), this);
+			this.clues.add(clueEntity);
+		}
+	}
+
+	private void load(SaveableRiddle riddle) {
 		id = riddle.getId();
 		description = riddle.getDescription();
 		answer = riddle.getAnswer();
