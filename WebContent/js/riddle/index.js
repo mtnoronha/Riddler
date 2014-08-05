@@ -31,7 +31,8 @@ $(document).ready(function(){
 			answer.replaceWith(this.inputTemplate(answerText));
 			clue.replaceWith(this.inputTemplate(clueText));		
 					
-			row.append(this.buttonTemplate(row));
+			row.append(this.editButtonTemplate(row));
+			row.append(this.removeButtonTemplate(row));
 		},
 		
 		replaceWithText: function(row){
@@ -39,15 +40,17 @@ $(document).ready(function(){
 			
 			var answer = $(values[1]);
 			var clue = $(values[2]);
-			var btn = $(values[3]);
-						
+			var editBtn = $(values[3]);
+			var removeBtn = $(values[4]);
+			
 			var answerText = answer.find('input').val();
 			var clueText =  clue.find('input').val();
 			
 			answer.replaceWith($('<td>').html(answerText));
 			clue.replaceWith($('<td>').html(clueText));			
 
-			btn.remove();
+			editBtn.remove();
+			removeBtn.remove();
 		},
 		closeEditing: function(){
 			var actives = this.container.find('.edit-row-btn');
@@ -72,7 +75,7 @@ $(document).ready(function(){
 			return  $('<td>').append($("<input>").attr('type', 'text').attr('value', value).addClass('form-control'));	
 		},
 		
-		buttonTemplate: function(row){
+		editButtonTemplate: function(row){
 			var that = this;
 			
 			var btn = $('<button>').attr('type','button').addClass('edit-row-btn btn btn-success').html($('<span>').addClass("glyphicon glyphicon-pencil"));
@@ -83,6 +86,16 @@ $(document).ready(function(){
 			});
 			
 			return $('<td>').append(btn);
+		},
+		removeButtonTemplate: function(row){
+			var btn = $('<button>').attr('type','button').addClass('edit-row-btn btn btn-danger').html($('<span>').addClass("glyphicon glyphicon-remove"));
+			
+			btn.on('click', function(e){
+				e.stopPropagation();
+				row.remove();
+			});
+			
+			return $('<td>').append(btn);			
 		}
 	};
 
