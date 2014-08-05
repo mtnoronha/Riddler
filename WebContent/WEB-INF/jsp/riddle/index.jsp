@@ -76,7 +76,7 @@
 									</div>
 									<div class="row">
 										<div class="col-lg-1">
-											<button id="btnAdd" type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> ${i18n.btn.addClue}</button>
+											<button id="btnAdd" type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span></button>
 										</div>
 									</div>
 									<hr>
