@@ -49,7 +49,13 @@ $(document).ready(function(){
 
 			btn.remove();
 		},
-		
+		closeEditing: function(){
+			var actives = this.container.find('.edit-row-btn');
+			
+			actives.each(function(){
+				this.click();
+			});
+		},
 		template: function(answerText, clueText){
 			var id = $('<td>');
 			var answer = $('<td>').html(answerText);
@@ -69,7 +75,7 @@ $(document).ready(function(){
 		buttonTemplate: function(row){
 			var that = this;
 			
-			var btn = $('<button>').attr('type','button').addClass('btn btn-success').html($('<span>').addClass("glyphicon glyphicon-pencil"));
+			var btn = $('<button>').attr('type','button').addClass('edit-row-btn btn btn-success').html($('<span>').addClass("glyphicon glyphicon-pencil"));
 			
 			btn.on('click', function(e){
 				e.stopPropagation();
@@ -149,6 +155,7 @@ $(document).ready(function(){
 			return false;
 		}
 
+		clues.closeEditing();
 		formControl.addClues(cluesArray);		
 	});
 	
