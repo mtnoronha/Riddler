@@ -34,6 +34,5 @@
 			</table>
 		</div>
 		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<script src="<c:url value='/js/riddle/index.js'/>"></script>
 	</body>
 </html>
