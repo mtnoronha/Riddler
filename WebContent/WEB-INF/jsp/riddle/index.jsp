@@ -69,7 +69,7 @@
 										</div>
 										<div class="col-lg-9">
 											<div class="form-group">
-												<label for="clueClue">${i18n.label.Clue}</label>
+												<label for="clueClue">${i18n.label.clue}</label>
 												<input type="text" class="form-control" id="clueClue">
 											</div>
 										</div>
@@ -83,9 +83,9 @@
 									<table class="table table-striped">
 										<thead>
 											<tr>
-												<th>${i18n.label.id}</th>
-												<th>${i18n.label.answer}</th>
-												<th>${i18n.label.clue}</th>
+												<th class="col-sm-1">${i18n.label.id}</th>
+												<th class="col-sm-5">${i18n.label.answer}</th>
+												<th class="col-sm-6">${i18n.label.clue}</th>
 											</tr>											
 										</thead>
 										<tbody id="clueTableContent">
