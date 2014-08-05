@@ -82,9 +82,11 @@ $(document).ready(function(){
 
 	var formControl = {
 		form: $('form'),
+		
 		add: function(input){
 			this.form.append(input);
 		},
+		
 		addClues: function(clues){
 			var that = this;
 						
@@ -105,6 +107,7 @@ $(document).ready(function(){
 				that.add(that.template(clueName, clueText));			
 			});			
 		},		
+		
 		template: function(name, value){
 			return $("<input>").attr('type', 'hidden').attr('value', value).attr('name', name);		
 		}		
