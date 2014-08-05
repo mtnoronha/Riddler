@@ -16,10 +16,10 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th>${i18n.label.id}</th>
-							<th>${i18n.label.description}</th>
-							<th></th>
-							<th></th>						
+							<th class="col-sm-1">${i18n.label.id}</th>
+							<th class="col-sm-10">${i18n.label.description}</th>
+							<th class="col-sm-1"></th>
+							<th class="col-sm-1"></th>						
 						</tr>											
 					</thead>
 					<tbody id="clueTableContent">
