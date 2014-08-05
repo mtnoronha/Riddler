@@ -62,16 +62,13 @@ public class RiddleController {
 
 		dao.save(riddle, clues);
 
-		result.redirectTo(RiddleController.class).index(null);
+		result.redirectTo(RiddleController.class).list();
 	}
 
-	// TODO implement this later
 	@Get("/enigma/remove/{riddle}")
 	public void remove(Riddle riddle) {
-		if (riddle == null) {
-			logger.info("Cant remove a null Riddle");
-		} else {
-			logger.info("Removing: " + riddle.getId());
-		}
+		dao.remove(riddle);
+
+		result.redirectTo(RiddleController.class).list();
 	}
 }

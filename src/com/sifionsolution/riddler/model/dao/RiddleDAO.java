@@ -48,4 +48,9 @@ public class RiddleDAO {
 	public Riddle find(Long id) {
 		return dao.getById(id);
 	}
+
+	public void remove(Riddle riddle) {
+		if (riddle != null)
+			dao.delete(riddle);
+	}
 }
