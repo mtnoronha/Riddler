@@ -7,6 +7,8 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>com.sifionsolution.riddler.model.User</class>  	      	          
 		<class>com.sifionsolution.riddler.model.Riddle</class>  	      	          
-		<class>com.sifionsolution.riddler.model.Clue</class>  	      	          
+		<class>com.sifionsolution.riddler.model.Clue</class>  	
+		<class>com.sifionsolution.riddler.model.RiddleTest</class>      	          
+		<class>com.sifionsolution.riddler.model.RiddleTestAnswer</class>      	          
 	</persistence-unit>
 </persistence>
