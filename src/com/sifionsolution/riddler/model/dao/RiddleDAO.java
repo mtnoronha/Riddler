@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import com.sifionsolution.riddler.dao.GenericDAO;
-import com.sifionsolution.riddler.model.Clue;
 import com.sifionsolution.riddler.model.Riddle;
 import com.sifionsolution.riddler.model.dto.SaveableClue;
 import com.sifionsolution.riddler.model.dto.SaveableRiddle;
@@ -16,7 +15,6 @@ import com.sifionsolution.riddler.model.dto.SaveableRiddle;
 public class RiddleDAO {
 
 	private final GenericDAO<Long, Riddle> dao;
-	private final GenericDAO<Long, Clue> clueDao;
 
 	/*
 	 * CDI eyes only
@@ -29,19 +27,25 @@ public class RiddleDAO {
 	@Inject
 	public RiddleDAO(EntityManager manager) {
 		dao = new GenericDAO<Long, Riddle>(Riddle.class, manager);
-		clueDao = new GenericDAO<Long, Clue>(Clue.class, manager);
 	}
 
 	public void save(SaveableRiddle riddle, List<SaveableClue> clues) {
 		Riddle entity = new Riddle();
-		entity.load(riddle);
 
-		dao.save(entity);
+		entity.load(riddle, clues);
 
-		for (SaveableClue clue : clues) {
-			Clue clueEntity = new Clue();
-			clueEntity.load(clue, entity);
-			clueDao.save(clueEntity);
+		if (entity.getId() != null) {
+			dao.update(entity);
+		} else {
+			dao.save(entity);
 		}
+	}
+
+	public List<Riddle> list() {
+		return dao.findAll();
+	}
+
+	public Riddle find(Long id) {
+		return dao.getById(id);
 	}
 }
