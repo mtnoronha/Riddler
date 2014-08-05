@@ -18,7 +18,7 @@
 						<th>${i18n.label.id}</th>
 						<th>${i18n.label.description}</th>
 						<th></th>
-						<th></th>
+						<th></th>						
 					</tr>											
 				</thead>
 				<tbody id="clueTableContent">
@@ -26,8 +26,8 @@
 						<tr>
 							<td>${riddle.id}</td>
 							<td>${riddle.description}</td>
-							<td><a href="${linkTo[RiddleController].index(riddle.id)}" class="btn btn-info">${i18n.btn.edit}</a></td>
-							<td><a href="${linkTo[RiddleController].remove(riddle.id)}" class="btn btn-info">${i18n.btn.remove}</a></td>
+							<td><a href="${linkTo[RiddleController].index(riddle.id)}" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a></td>
+							<td><a href="${linkTo[RiddleController].remove(riddle.id)}" class="btn btn-info"><span class="glyphicon glyphicon-remove"></span></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
