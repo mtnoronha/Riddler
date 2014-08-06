@@ -68,6 +68,19 @@ public class Riddle {
 		level = riddle.getLevel();
 	}
 
+	public boolean check(String userAnswer) {
+		return answer.equalsIgnoreCase(userAnswer);
+	}
+
+	public String findClue(String userAnswer) {
+		for (Clue clue : clues) {
+			if (clue.getAnswer().equalsIgnoreCase(userAnswer)) {
+				return clue.getClue();
+			}
+		}
+		return null;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -91,5 +104,4 @@ public class Riddle {
 	public List<Clue> getClues() {
 		return clues;
 	}
-
 }

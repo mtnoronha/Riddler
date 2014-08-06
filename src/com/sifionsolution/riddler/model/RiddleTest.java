@@ -1,5 +1,7 @@
 package com.sifionsolution.riddler.model;
 
+import static org.joda.time.DateTime.now;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -50,6 +52,19 @@ public class RiddleTest {
 		this.user = user;
 	}
 
+	public boolean checkAnswer(String answer) {
+		return riddle.check(answer);
+	}
+
+	public String findClue(String answer) {
+		return riddle.findClue(answer);
+	}
+
+	public void riddleSolved() {
+		solved = true;
+		end = now();
+	}
+
 	public final Long getId() {
 		return id;
 	}
@@ -78,4 +93,7 @@ public class RiddleTest {
 		return user;
 	}
 
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 }

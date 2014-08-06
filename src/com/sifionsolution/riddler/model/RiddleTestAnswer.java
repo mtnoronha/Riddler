@@ -36,6 +36,14 @@ public class RiddleTestAnswer {
 		this.time = time;
 	}
 
+	public boolean isCorrectAnswer() {
+		return riddleTest.checkAnswer(answer);
+	}
+
+	public String findClue() {
+		return riddleTest.findClue(answer);
+	}
+
 	public final Long getId() {
 		return id;
 	}
@@ -51,4 +59,5 @@ public class RiddleTestAnswer {
 	public final DateTime getTime() {
 		return time;
 	}
+
 }
