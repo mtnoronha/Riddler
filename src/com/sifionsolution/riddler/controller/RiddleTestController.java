@@ -8,9 +8,12 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.validator.I18nMessage;
 
-import com.sifionsolution.riddler.model.dao.RiddleTestDAO;
+import com.sifionsolution.riddler.model.RiddleTest;
 import com.sifionsolution.riddler.model.dto.SaveableRiddleTest;
+import com.sifionsolution.riddler.model.wrapper.RiddleWrapper;
+import com.sifionsolution.riddler.riddle.test.RiddleTestControl;
 import com.sifionsolution.riddler.security.AllowTo;
 
 @Controller
@@ -18,17 +21,21 @@ import com.sifionsolution.riddler.security.AllowTo;
 public class RiddleTestController {
 
 	@Inject
-	private RiddleTestDAO dao;
+	private Result result;
 
 	@Inject
-	private Result result;
+	private RiddleTestControl control;
 
 	@Get("/teste")
 	public void index() {
-		// TODO include actual RiddleTest (unfinished) or NEXT RiddleTest
-		// If none exists, include a msg.
+		RiddleTest actual = control.getCurrent();
 
-		// Should use a RiddleWrapper.
+		if (actual == null) {
+			result.include("msg", new I18nMessage("", "riddles.no.riddles.available"));
+		} else {
+			result.include("riddle", new RiddleWrapper(actual.getRiddle()));
+		}
+
 	}
 
 	@Post("/teste/responder")
