@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import org.joda.time.DateTime;
 
 @Entity
-@Table(name = "tb_riddle_test")
+@Table(name = "tb_riddle_test_answer")
 public class RiddleTestAnswer {
 
 	@Id
@@ -19,7 +19,7 @@ public class RiddleTestAnswer {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "id_riddle_test_answer")
+	@JoinColumn(name = "id_riddle_test")
 	private RiddleTest riddleTest;
 
 	private String answer;

@@ -17,11 +17,14 @@
 			
 			<div class="row">
 				<div class="col-lg-12">
-					<c:if test="${errors != null}">
-						<div class="alert alert-danger" role="alert">
-							<c:forEach var="error" items="${errors}">
-							   ${error.message}<br />
-							</c:forEach>
+					<c:if test="${msg != null}">
+						<div class="alert alert-info" role="alert">
+						   ${msg}<br />
+						</div>
+					</c:if>
+					<c:if test="${clue != null}">
+						<div class="alert alert-success" role="alert">
+						   ${clue}<br />
 						</div>
 					</c:if>
 					

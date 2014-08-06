@@ -11,7 +11,6 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.I18nMessage;
 
 import com.sifionsolution.riddler.model.RiddleTest;
-import com.sifionsolution.riddler.model.dto.SaveableRiddleTest;
 import com.sifionsolution.riddler.model.wrapper.RiddleWrapper;
 import com.sifionsolution.riddler.riddle.test.RiddleTestControl;
 import com.sifionsolution.riddler.security.AllowTo;
@@ -40,11 +39,31 @@ public class RiddleTestController {
 
 	@Post("/teste/responder")
 	public void answer(String answer) {
-		// TODO save the answer on current Riddle Test
+		control.answer(answer);
+
+		if (control.isSolved()) {
+			result.redirectTo(RiddleTestController.class).survey(control.getCurrent());
+		} else {
+			result.include("clue", control.getClue());
+
+			result.redirectTo(RiddleTestController.class).index();
+		}
 	}
 
-	@Post("/teste/finalizar")
-	public void finish(SaveableRiddleTest test) {
+	@Get("/teste/acertou")
+	public void survey(RiddleTest test) {
+		result.include("test", test.getId());
+	}
 
+	// FIXME not working properly
+	@Post("/teste/finalizar")
+	public void finish(RiddleTest test, String comment, boolean quit) {
+		control.comment(test, comment);
+
+		if (quit) {
+			result.redirectTo(RootController.class).index();
+		} else {
+			result.redirectTo(RiddleTestController.class).index();
+		}
 	}
 }

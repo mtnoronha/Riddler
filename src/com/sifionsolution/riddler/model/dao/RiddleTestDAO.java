@@ -15,6 +15,7 @@ import com.sifionsolution.riddler.dao.GenericDAO;
 import com.sifionsolution.riddler.dao.parameters.HqlParameter;
 import com.sifionsolution.riddler.model.Riddle;
 import com.sifionsolution.riddler.model.RiddleTest;
+import com.sifionsolution.riddler.model.RiddleTestAnswer;
 import com.sifionsolution.riddler.model.User;
 import com.sifionsolution.riddler.security.UserWeb;
 
@@ -22,6 +23,8 @@ import com.sifionsolution.riddler.security.UserWeb;
 public class RiddleTestDAO {
 
 	private final GenericDAO<Long, RiddleTest> dao;
+	private final GenericDAO<Long, RiddleTestAnswer> answerDao;
+
 	private final UserWeb userWeb;
 	private final UserDAO userDao;
 
@@ -40,6 +43,7 @@ public class RiddleTestDAO {
 		this.userWeb = userWeb;
 		this.userDao = userDao;
 		dao = new GenericDAO<Long, RiddleTest>(RiddleTest.class, manager);
+		answerDao = new GenericDAO<Long, RiddleTestAnswer>(RiddleTestAnswer.class, manager);
 
 	}
 
@@ -81,4 +85,17 @@ public class RiddleTestDAO {
 	private User getUser() {
 		return userDao.getBy(userWeb);
 	}
+
+	public void save(RiddleTestAnswer entity) {
+		answerDao.save(entity);
+	}
+
+	public void update(RiddleTest test) {
+		dao.update(test);
+	}
+
+	public RiddleTest find(Long id) {
+		return dao.getById(id);
+	}
+
 }
