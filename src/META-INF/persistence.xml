@@ -5,6 +5,7 @@
 
 	<persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>com.sifionsolution.riddler.database.converter.JpaDateTimeConverter</class>
 		<class>com.sifionsolution.riddler.model.User</class>  	      	          
 		<class>com.sifionsolution.riddler.model.Riddle</class>  	      	          
 		<class>com.sifionsolution.riddler.model.Clue</class>  	
