@@ -9,6 +9,7 @@ import com.sifionsolution.riddler.dao.parameters.HqlParameter;
 import com.sifionsolution.riddler.model.User;
 import com.sifionsolution.riddler.model.dto.SignInUser;
 import com.sifionsolution.riddler.model.dto.SignUpUser;
+import com.sifionsolution.riddler.security.UserWeb;
 
 @RequestScoped
 public class UserDAO {
@@ -44,5 +45,12 @@ public class UserDAO {
 						"select u from User u where (u.username = :username OR u.email = :username) AND u.password = :password",
 						new HqlParameter("username", user.getUsername()),
 						new HqlParameter("password", user.getPassword()));
+	}
+
+	public User getBy(UserWeb userWeb) {
+		return (User) dao.uniqueResultByHql(
+				"select u from User u where (u.username = :username OR u.email = :username)", new HqlParameter(
+						"username", userWeb.getUsername()));
+
 	}
 }
