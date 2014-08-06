@@ -22,13 +22,13 @@ dependencies {
 	compile library.cdi_weld
 	compile library.eclipselink
 	compile library.vraptor
-	compile library.vraptor_javatime
+
+	compile library.vraptor_jodatime
 	
 	compile library.ssolution_commons
 	
 	compile library.flyway_core
 	
-	compile library.javassist
 	compile library.javax_jstl
 
 	compile library.javax_servlet

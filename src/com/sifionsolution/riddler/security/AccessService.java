@@ -1,6 +1,6 @@
 package com.sifionsolution.riddler.security;
 
-import static com.sifionsolution.commons.util.ContentVerifyer.isEmpty;
+import static com.sifionsolution.commons.ContentVerifyer.isEmpty;
 
 import java.lang.annotation.Annotation;
 import java.util.Arrays;

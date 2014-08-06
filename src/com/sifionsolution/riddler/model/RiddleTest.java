@@ -1,7 +1,5 @@
 package com.sifionsolution.riddler.model;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.joda.time.DateTime;
 
 @Entity
 @Table(name = "tb_riddle_test")
@@ -27,9 +27,9 @@ public class RiddleTest {
 	@JoinColumn(name = "id_user")
 	private User user;
 
-	private LocalDateTime start;
+	private DateTime start;
 
-	private LocalDateTime end;
+	private DateTime end;
 
 	@Column(columnDefinition = "TEXT")
 	private String comment;
@@ -40,8 +40,7 @@ public class RiddleTest {
 	public RiddleTest() {
 	}
 
-	public RiddleTest(Long id, LocalDateTime start, LocalDateTime end, String comment, Boolean solved, Riddle riddle,
-			User user) {
+	public RiddleTest(Long id, DateTime start, DateTime end, String comment, Boolean solved, Riddle riddle, User user) {
 		this.id = id;
 		this.start = start;
 		this.end = end;
@@ -55,11 +54,11 @@ public class RiddleTest {
 		return id;
 	}
 
-	public final LocalDateTime getStart() {
+	public final DateTime getStart() {
 		return start;
 	}
 
-	public final LocalDateTime getEnd() {
+	public final DateTime getEnd() {
 		return end;
 	}
 

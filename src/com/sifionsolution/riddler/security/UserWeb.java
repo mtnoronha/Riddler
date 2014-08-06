@@ -1,6 +1,6 @@
 package com.sifionsolution.riddler.security;
 
-import static com.sifionsolution.commons.util.ContentVerifyer.notEmpty;
+import static com.sifionsolution.commons.ContentVerifyer.notEmpty;
 import static com.sifionsolution.riddler.enums.Role.LOGGED_IN;
 import static com.sifionsolution.riddler.enums.Role.LOGGED_OFF;
 

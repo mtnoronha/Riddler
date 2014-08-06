@@ -1,6 +1,6 @@
 package com.sifionsolution.riddler.converter;
 
-import static com.sifionsolution.commons.util.ContentVerifyer.isEmpty;
+import static com.sifionsolution.commons.ContentVerifyer.isEmpty;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
