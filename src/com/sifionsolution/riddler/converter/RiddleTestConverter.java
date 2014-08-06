@@ -11,11 +11,10 @@ import org.slf4j.LoggerFactory;
 import br.com.caelum.vraptor.Convert;
 import br.com.caelum.vraptor.TwoWayConverter;
 
-import com.sifionsolution.riddler.model.Riddle;
 import com.sifionsolution.riddler.model.RiddleTest;
 import com.sifionsolution.riddler.model.dao.RiddleTestDAO;
 
-@Convert(Riddle.class)
+@Convert(RiddleTest.class)
 @RequestScoped
 public class RiddleTestConverter implements TwoWayConverter<RiddleTest> {
 
