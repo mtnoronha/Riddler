@@ -2,6 +2,8 @@ package com.sifionsolution.riddler.controller;
 
 import static com.sifionsolution.riddler.enums.Role.LOGGED_IN;
 
+import java.util.ResourceBundle;
+
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
@@ -25,12 +27,20 @@ public class RiddleTestController {
 	@Inject
 	private RiddleTestControl control;
 
+	@Inject
+	private ResourceBundle bundle;
+
 	@Get("/teste")
 	public void index() {
 		RiddleTest actual = control.getCurrent();
 
 		if (actual == null) {
-			result.include("msg", new I18nMessage("", "riddles.no.riddles.available"));
+
+			// TODO extract this bundle setting to elsewhere
+			I18nMessage msg = new I18nMessage("", "riddles.no.riddles.available");
+			msg.setBundle(bundle);
+
+			result.include("msg", msg);
 		} else {
 			result.include("riddle", new RiddleWrapper(actual.getRiddle()));
 		}

@@ -19,7 +19,7 @@
 				<div class="col-lg-12">
 					<c:if test="${msg != null}">
 						<div class="alert alert-info" role="alert">
-						   ${msg}<br />
+						   ${msg.message}<br />
 						</div>
 					</c:if>
 					<c:if test="${clue != null}">
