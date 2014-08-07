@@ -13,10 +13,12 @@ import java.util.List;
 
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
 import com.sifionsolution.riddler.enums.Role;
 import com.sifionsolution.riddler.model.User;
 
+@Named
 @SessionScoped
 public class UserWeb implements Serializable {
 
