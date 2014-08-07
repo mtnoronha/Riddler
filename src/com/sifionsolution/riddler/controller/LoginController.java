@@ -54,5 +54,6 @@ public class LoginController {
 	@Get("/logout")
 	public void logout() {
 		auth.logoff();
+		result.redirectTo(RootController.class).index();
 	}
 }
