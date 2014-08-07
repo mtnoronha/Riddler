@@ -1,8 +1,10 @@
 package com.sifionsolution.riddler.security;
 
 import static com.sifionsolution.commons.ContentVerifyer.notEmpty;
+import static com.sifionsolution.riddler.enums.Role.ADMIN;
 import static com.sifionsolution.riddler.enums.Role.LOGGED_IN;
 import static com.sifionsolution.riddler.enums.Role.LOGGED_OFF;
+import static com.sifionsolution.riddler.enums.Role.MODERATOR;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,6 +28,14 @@ public class UserWeb implements Serializable {
 
 	public boolean isLoggedIn() {
 		return containsAny(Arrays.asList(LOGGED_IN));
+	}
+
+	public boolean isModerator() {
+		return containsAny(Arrays.asList(MODERATOR));
+	}
+
+	public boolean isAdmin() {
+		return containsAny(Arrays.asList(ADMIN));
 	}
 
 	public boolean containsAny(List<Role> roles) {
