@@ -12,7 +12,7 @@
 	<body>
 		<c:import url="/WEB-INF/jsp/import/menu.jsp"></c:import>
 		<div class="container">
-			<div class="riddle jumbotron text-center">
+			<div class="riddle jumbotron text-center ${riddle == null? 'hidden' : '' }">
 				${riddle.description}
 			</div>
 			
@@ -29,7 +29,7 @@
 						</div>
 					</c:if>
 					
-					<form role="form" action="${linkTo[RiddleTestController].answer}" method="post">
+					<form role="form" class="${riddle == null? 'hidden' : '' }" action="${linkTo[RiddleTestController].answer}" method="post">
 						<div class="form-group">
 							<label for="answer">${i18n.answer}</label>
 							<input type="text" class="form-control" id="answer" name="answer" placeholder="${i18n.type.your.answer}">
