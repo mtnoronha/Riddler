@@ -37,7 +37,7 @@ public class RiddleTestController {
 		if (actual == null) {
 
 			// TODO extract this bundle setting to elsewhere
-			I18nMessage msg = new I18nMessage("", "riddles.no.riddles.available");
+			I18nMessage msg = new I18nMessage("", "riddle.no.riddles.available");
 			msg.setBundle(bundle);
 
 			result.include("msg", msg);
@@ -65,15 +65,10 @@ public class RiddleTestController {
 		result.include("test", test.getId());
 	}
 
-	// FIXME not working properly
 	@Post("/teste/finalizar")
-	public void finish(RiddleTest test, String comment, boolean quit) {
+	public void finish(RiddleTest test, String comment) {
 		control.comment(test, comment);
 
-		if (quit) {
-			result.redirectTo(RootController.class).index();
-		} else {
-			result.redirectTo(RiddleTestController.class).index();
-		}
+		result.redirectTo(RiddleTestController.class).index();
 	}
 }
