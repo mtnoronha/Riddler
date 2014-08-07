@@ -10,6 +10,7 @@
 	</head>
 	
 	<body>
+		<c:import url="/WEB-INF/jsp/import/menu.jsp"></c:import>
 		<div class="container">
 			<div class="jumbotron text-center">
 				Profile test
