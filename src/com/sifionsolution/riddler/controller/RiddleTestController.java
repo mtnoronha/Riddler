@@ -60,6 +60,12 @@ public class RiddleTestController {
 		}
 	}
 
+	@Post("/teste/desistir")
+	public void giveup() {
+		control.giveup();
+		result.redirectTo(RiddleTestController.class).survey(control.getCurrent());
+	}
+
 	@Get("/teste/acertou")
 	public void survey(RiddleTest test) {
 		result.include("test", test.getId());

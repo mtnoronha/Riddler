@@ -65,35 +65,41 @@ public class RiddleTest {
 		end = now();
 	}
 
-	public final Long getId() {
+	public void giveUp() {
+		solved = false;
+		end = now();
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public final DateTime getStart() {
+	public DateTime getStart() {
 		return start;
 	}
 
-	public final DateTime getEnd() {
+	public DateTime getEnd() {
 		return end;
 	}
 
-	public final String getComment() {
+	public String getComment() {
 		return comment;
 	}
 
-	public final Boolean getSolved() {
+	public Boolean getSolved() {
 		return solved;
 	}
 
-	public final Riddle getRiddle() {
+	public Riddle getRiddle() {
 		return riddle;
 	}
 
-	public final User getUser() {
+	public User getUser() {
 		return user;
 	}
 
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+
 }

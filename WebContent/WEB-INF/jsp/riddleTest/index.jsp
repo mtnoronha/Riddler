@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Riddler</title>
 		
 		<link href="<c:url value='/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
@@ -36,6 +36,13 @@
 						</div>
 						<button type="submit" class="btn btn-lg btn-block btn-answer">${i18n.btn.answer}</button>				
 					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-2 pull-right">
+					<form role="form" class="${riddle == null? 'hidden' : '' }" action="${linkTo[RiddleTestController].giveup}" method="post">
+						<button type="submit" class="btn btn-lg btn-danger">${i18n.btn.giveup}</button>				
+					</form>		
 				</div>
 			</div>
 		</div>

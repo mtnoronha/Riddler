@@ -48,12 +48,24 @@ public class RiddleTestControl {
 		evaluateAnswer(entity);
 	}
 
+	public void giveup() {
+		current.giveUp();
+		dao.update(current);
+	}
+
 	public boolean isSolved() {
 		return solved;
 	}
 
 	public String getClue() {
 		return clue;
+	}
+
+	public void comment(RiddleTest test, String comment) {
+		if (notEmpty(comment)) {
+			test.setComment(comment);
+			dao.update(test);
+		}
 	}
 
 	private void evaluateAnswer(RiddleTestAnswer entity) {
@@ -73,10 +85,4 @@ public class RiddleTestControl {
 		clue = entity.findClue();
 	}
 
-	public void comment(RiddleTest test, String comment) {
-		if (notEmpty(comment)) {
-			test.setComment(comment);
-			dao.update(test);
-		}
-	}
 }
