@@ -7,7 +7,7 @@ apply plugin: 'lesscss'
 
 apply from: "https://raw.githubusercontent.com/SifionSolution/rootGradle/master/root.gradle"
 
-group = "riddler"
+group = "codex"
 version = "1.0"
 
 
