@@ -50,4 +50,9 @@ public class UserDAO {
 						"username", userWeb.getUsername()));
 
 	}
+
+	public boolean containsUserWith(String username, String email) {
+		return (User) dao.uniqueResultByHql("select u from User u where (u.username = :username OR u.email = :email)",
+				new HqlParameter("username", username), new HqlParameter("email", email)) != null;
+	}
 }
