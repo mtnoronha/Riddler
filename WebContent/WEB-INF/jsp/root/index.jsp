@@ -18,9 +18,12 @@
 				<hr>
 				<br>
 				<p>We need your help. Your job is to crack our riddles and give us some feedback</p>
-				<p>This is our testing enviroment for our riddles. Thus, there will be no points or ranking in this enviroment.</p>
-				<p>Are you up for the challange? We hope you have fun.</p>
+				<p>This is our testing environment for our riddles. Thus, there will be no points or ranking in this enviroment.</p>
+				<p>Are you up for the challenge? We hope you have fun.</p>
 			</div>			
+			
+			<a href="${linkTo[RegisterController].index}" class="btn btn-success btn-block btn-lg">${i18n.root.btn}</a>
+					
 			<div class="well well-small text-center">
 				<p>Any questions or suggestion? Send us a message: <a href="mailto:ssolution.codex@gmail.com">ssolution.codex@gmail.com</a></p>
 			</div>
