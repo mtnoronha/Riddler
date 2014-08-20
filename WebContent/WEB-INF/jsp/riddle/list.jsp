@@ -13,6 +13,8 @@
 	<body>
 		<c:import url="/WEB-INF/jsp/import/menu.jsp"></c:import>
 		<div class="container">
+			<a href="${linkTo[RiddleController].index}" class="btn btn-success">${i18n.btn.newRiddle}</a>
+		
 			<div class="well">
 				<table class="table">
 					<thead>
