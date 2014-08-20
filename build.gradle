@@ -60,6 +60,12 @@ lesscss {
     compress = true
 }
 
+task productionConfig(type: Copy) {
+    from 'WebContent/WEB-INF/config/production'
+    into 'WebContent/WEB-INF/config'
+    include '*'
+}
+
 
 
 webAppDirName = 'WebContent'
