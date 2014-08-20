@@ -66,7 +66,7 @@ public class RiddleTestDAO {
 	public RiddleTest getNextTest() {
 		List<Riddle> list = (List<Riddle>) dao
 				.listByHql(
-						"Select r from Riddle r where not exists (select rt.riddle from RiddleTest rt where rt.riddle = r and rt.user.username = :user)",
+						"Select r from Riddle r where not exists (select rt.riddle from RiddleTest rt where rt.riddle = r and rt.user.username = :user) order by r.level",
 						new HqlParameter("user", userWeb.getUsername()));
 
 		if (list.isEmpty())
