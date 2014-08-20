@@ -12,7 +12,7 @@
 	<body>
 		<c:import url="/WEB-INF/jsp/import/menu.jsp"></c:import>
 		<div class="container">
-			<div class="riddle jumbotron text-center ${riddle == null? 'hidden' : '' }">
+			<div class="riddle jumbotron ${riddle == null? 'hidden' : '' }">
 				${riddle.description}
 			</div>
 			
