@@ -68,7 +68,11 @@ public class RiddleTestController {
 
 	@Get("/test/correct")
 	public void survey(RiddleTest test) {
-		result.include("test", test.getId());
+		if (test != null) {
+			result.include("test", test.getId());
+		} else {
+			result.redirectTo(RiddleTestController.class).index();
+		}
 	}
 
 	@Post("/test/finish")
