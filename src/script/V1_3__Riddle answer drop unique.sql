@@ -1,0 +1,1 @@
+ALTER TABLE tb_riddle DROP INDEX answer;
