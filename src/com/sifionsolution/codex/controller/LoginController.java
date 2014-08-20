@@ -17,6 +17,7 @@ import br.com.caelum.vraptor.validator.Validator;
 import com.sifionsolution.codex.model.dto.SignInUser;
 import com.sifionsolution.codex.security.AllowTo;
 import com.sifionsolution.codex.security.Authenticator;
+import com.sifionsolution.codex.security.encryption.PasswordEncryption;
 
 @Controller
 public class LoginController {
@@ -37,10 +38,11 @@ public class LoginController {
 
 	@AllowTo(LOGGED_OFF)
 	@Post("/login")
-	public void login(@NotNull @Valid SignInUser user) {
+	public void login(@NotNull @Valid SignInUser user,
+			@NotNull(message = "{empty.password}") @PasswordEncryption String password) {
 		validator.onErrorRedirectTo(LoginController.class).index();
 
-		I18nMessage loginError = auth.authenticate(user);
+		I18nMessage loginError = auth.authenticate(user, password);
 
 		if (loginError != null) {
 			validator.add(loginError);

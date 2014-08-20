@@ -29,22 +29,19 @@ public class UserDAO {
 		dao = new GenericDAO<Long, User>(User.class, manager);
 	}
 
-	public void register(SignUpUser dto) {
+	public void register(SignUpUser dto, String password) {
 		User user = new User();
-		// FIXME encrypt it!
-		String encrypted = dto.getPassword();
 
-		user.load(dto, encrypted);
+		user.load(dto, password);
 
 		dao.save(user);
 	}
 
-	public User login(SignInUser user) {
+	public User login(SignInUser user, String password) {
 		return (User) dao
 				.uniqueResultByHql(
 						"select u from User u where (u.username = :username OR u.email = :username) AND u.password = :password",
-						new HqlParameter("username", user.getUsername()),
-						new HqlParameter("password", user.getPassword()));
+						new HqlParameter("username", user.getUsername()), new HqlParameter("password", password));
 	}
 
 	public User getBy(UserWeb userWeb) {

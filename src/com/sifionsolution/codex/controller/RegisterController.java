@@ -15,6 +15,7 @@ import br.com.caelum.vraptor.validator.Validator;
 import com.sifionsolution.codex.model.dao.UserDAO;
 import com.sifionsolution.codex.model.dto.SignUpUser;
 import com.sifionsolution.codex.security.AllowTo;
+import com.sifionsolution.codex.security.encryption.PasswordEncryption;
 
 @Controller
 @AllowTo(LOGGED_OFF)
@@ -34,10 +35,11 @@ public class RegisterController {
 	}
 
 	@Post("/registrar")
-	public void register(@NotNull @Valid SignUpUser user) {
+	public void register(@NotNull @Valid SignUpUser user,
+			@NotNull(message = "{empty.password}") @PasswordEncryption String password) {
 		validator.onErrorRedirectTo(RegisterController.class).index();
 
-		dao.register(user);
+		dao.register(user, password);
 
 		result.redirectTo(RootController.class).index();
 	}

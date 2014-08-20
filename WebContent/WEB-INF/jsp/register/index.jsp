@@ -40,8 +40,9 @@
 						
 						<div class="form-group">
 							<label for="password">${i18n.label.password}</label>
-							<input type="password" class="form-control" id="password" name="user.password">
+							<input type="password" class="form-control" id="password" name="password">
 						</div>
+
 						<button type="submit" class="btn btn-lg btn-block btn-success">${i18n.btn.register}</button>				
 					</form>
 				</div>
