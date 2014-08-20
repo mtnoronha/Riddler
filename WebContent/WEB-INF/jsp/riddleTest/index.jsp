@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Riddler</title>
+		<title>${i18n.project.name}</title>
 		
 		<link href="<c:url value='/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
 		<link href="<c:url value='/css/style.css'/>" rel="stylesheet">
