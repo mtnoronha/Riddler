@@ -76,6 +76,10 @@ public class RiddleTestDAO {
 
 	}
 
+	public boolean doesTestBelongToUser(RiddleTest test) {
+		return test.getUser().getId().equals(getUser().getId());
+	}
+
 	private RiddleTest createRiddleTest(Riddle riddle) {
 		RiddleTest test = new RiddleTest(null, now(), null, null, null, riddle, getUser());
 		dao.save(test);

@@ -77,7 +77,8 @@ public class RiddleTestController {
 
 	@Post("/test/finish")
 	public void finish(RiddleTest test, String comment) {
-		control.comment(test, comment);
+		if (test != null)
+			control.comment(test, comment);
 
 		result.redirectTo(RiddleTestController.class).index();
 	}

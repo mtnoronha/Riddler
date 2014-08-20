@@ -11,6 +11,7 @@
 	
 	<body>
 		<div class="container">
+			<br>
 			<div class="riddle jumbotron text-center">
 				${i18n.riddle.thank.you}
 			</div>
