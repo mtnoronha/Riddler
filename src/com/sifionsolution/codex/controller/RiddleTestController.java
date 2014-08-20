@@ -66,7 +66,7 @@ public class RiddleTestController {
 		result.redirectTo(RiddleTestController.class).survey(control.getCurrent());
 	}
 
-	@Get("/test/correct")
+	@Get("/test/survey")
 	public void survey(RiddleTest test) {
 		if (test != null) {
 			result.include("test", test.getId());
