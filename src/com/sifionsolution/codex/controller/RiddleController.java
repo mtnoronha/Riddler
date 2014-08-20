@@ -9,9 +9,6 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
@@ -37,9 +34,7 @@ public class RiddleController {
 	@Inject
 	private Result result;
 
-	private static final Logger logger = LoggerFactory.getLogger(RiddleController.class);
-
-	@Get({ "/enigma/{riddle}", "/enigma", "/enigma/" })
+	@Get({ "/riddle/{riddle}", "/riddle", "/riddle/" })
 	public void index(Riddle riddle) {
 		result.include("riddle", riddle);
 
@@ -48,12 +43,12 @@ public class RiddleController {
 		}
 	}
 
-	@Get("/enigmas")
+	@Get("/riddles")
 	public void list() {
 		result.include("riddles", dao.list());
 	}
 
-	@Post("/enigma/salvar")
+	@Post("/riddle/save")
 	public void save(@NotNull @Valid SaveableRiddle riddle, @NotNull @Valid List<SaveableClue> clues) {
 		Riddle entity = new Riddle();
 		entity.load(riddle, clues);
@@ -65,7 +60,7 @@ public class RiddleController {
 		result.redirectTo(RiddleController.class).list();
 	}
 
-	@Get("/enigma/remove/{riddle}")
+	@Get("/riddle/remove/{riddle}")
 	public void remove(Riddle riddle) {
 		dao.remove(riddle);
 

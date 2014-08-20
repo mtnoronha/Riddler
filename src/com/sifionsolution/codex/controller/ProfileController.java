@@ -10,7 +10,7 @@ import com.sifionsolution.codex.security.AllowTo;
 @AllowTo(LOGGED_IN)
 public class ProfileController {
 
-	@Get("/perfil")
+	@Get("/profile")
 	public void index() {
 	}
 

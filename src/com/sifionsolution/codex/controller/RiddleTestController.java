@@ -30,7 +30,7 @@ public class RiddleTestController {
 	@Inject
 	private ResourceBundle bundle;
 
-	@Get("/teste")
+	@Get("/test")
 	public void index() {
 		RiddleTest actual = control.getCurrent();
 
@@ -47,7 +47,7 @@ public class RiddleTestController {
 
 	}
 
-	@Post("/teste/responder")
+	@Post("/test/answer")
 	public void answer(String answer) {
 		control.answer(answer);
 
@@ -60,18 +60,18 @@ public class RiddleTestController {
 		}
 	}
 
-	@Post("/teste/desistir")
+	@Post("/test/giveup")
 	public void giveup() {
 		control.giveup();
 		result.redirectTo(RiddleTestController.class).survey(control.getCurrent());
 	}
 
-	@Get("/teste/acertou")
+	@Get("/test/correct")
 	public void survey(RiddleTest test) {
 		result.include("test", test.getId());
 	}
 
-	@Post("/teste/finalizar")
+	@Post("/test/finish")
 	public void finish(RiddleTest test, String comment) {
 		control.comment(test, comment);
 

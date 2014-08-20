@@ -31,11 +31,11 @@ public class RegisterController {
 	@Inject
 	private UserDAO dao;
 
-	@Get("/registro")
+	@Get("/sign/up")
 	public void index() {
 	}
 
-	@Post("/registrar")
+	@Post("/registrer")
 	public void register(@NotNull @Valid @LoginAvailable SignUpUser user,
 			@NotNull(message = "{empty.password}") @PasswordEncryption String password) {
 		validator.onErrorRedirectTo(RegisterController.class).index();
