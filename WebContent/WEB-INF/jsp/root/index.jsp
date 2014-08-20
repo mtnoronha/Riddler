@@ -13,19 +13,27 @@
 		<c:import url="/WEB-INF/jsp/import/menu.jsp"></c:import>
 	
 		<div class="container">
-			<div class="jumbotron text-center">
-				<h1>Welcome to <b>Codex</b></h1>
-				<hr>
-				<br>
-				<p>We need your help. Your job is to crack our riddles and give us some feedback</p>
-				<p>This is our testing environment for our riddles. Thus, there will be no points or ranking in this enviroment.</p>
-				<p>Are you up for the challenge? We hope you have fun.</p>
-			</div>			
-			
-			<a href="${linkTo[RegisterController].index}" class="btn btn-success btn-block btn-lg">${i18n.root.btn}</a>
-					
-			<div class="well well-small text-center">
-				<p>Any questions or suggestion? Send us a message: <a href="mailto:ssolution.codex@gmail.com">ssolution.codex@gmail.com</a></p>
+			<div class="row">
+				<div class="jumbotron text-center">
+					<h1>Welcome to <b>Codex</b></h1>
+					<hr>
+					<br>
+					<p>We need your help. Your job is to crack our riddles and give us some feedback</p>
+					<p>This is our testing environment for our riddles. Thus, there will be no points or ranking in this enviroment.</p>
+					<p>Are you up for the challenge? We hope you have fun.</p>
+				</div>			
+			</div>
+			<c:if test="${!userWeb.loggedIn}">
+				<div class="row">
+					<a href="${linkTo[RegisterController].index}" class="btn btn-success btn-block btn-lg">${i18n.root.btn}</a>
+					<br>
+				</div>			
+			</c:if>
+
+			<div class="row">
+				<div class="well well-small text-center">
+					<p>Any questions or suggestion? Send us a message: <a href="mailto:ssolution.codex@gmail.com">ssolution.codex@gmail.com</a></p>
+				</div>
 			</div>
 		</div>
 		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
