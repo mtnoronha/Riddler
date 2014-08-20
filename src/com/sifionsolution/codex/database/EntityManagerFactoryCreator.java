@@ -45,7 +45,7 @@ public class EntityManagerFactoryCreator {
 		// Database configuration
 		Properties configs = service.getConfig(Config.DATABASE);
 		String user = configs.getProperty("user");
-		String pass = configs.getProperty("pass");
+		String pass = configs.getProperty("password");
 		String url = configs.getProperty("url");
 
 		// Migrate database
