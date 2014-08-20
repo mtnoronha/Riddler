@@ -13,20 +13,16 @@
 		<c:import url="/WEB-INF/jsp/import/menu.jsp"></c:import>
 	
 		<div class="container">
-			<div class="riddle jumbotron text-center">
-				The riddle will be displayed here
-			</div>
-			
-			<div class="row">
-				<div class="col-lg-12">
-					<form role="form">
-						<div class="form-group">
-							<label for="answer">${i18n.answer}</label>
-							<input type="text" class="form-control" id="answer" name="obj.answer" placeholder="${i18n.type.your.answer}">
-						</div>
-						<button type="submit" class="btn btn-lg btn-block btn-answer">${i18n.btn.answer}</button>				
-					</form>
-				</div>
+			<div class="jumbotron text-center">
+				<h1>Welcome to <b>Codex</b></h1>
+				<hr>
+				<br>
+				<p>We need your help. Your job is to crack our riddles and give us some feedback</p>
+				<p>This is our testing enviroment for our riddles. Thus, there will be no points or ranking in this enviroment.</p>
+				<p>Are you up for the challange? We hope you have fun.</p>
+			</div>			
+			<div class="well well-small text-center">
+				<p>Any questions or suggestion? Send us a message: <a href="mailto:ssolution.codex@gmail.com">ssolution.codex@gmail.com</a></p>
 			</div>
 		</div>
 		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
