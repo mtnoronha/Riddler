@@ -62,10 +62,14 @@ public class RiddleTestControl {
 	}
 
 	public void comment(RiddleTest test, String comment) {
-		if (notEmpty(comment)) {
+		if (notEmpty(comment) && testBelongsToUser(test)) {
 			test.setComment(comment);
 			dao.update(test);
 		}
+	}
+
+	private boolean testBelongsToUser(RiddleTest test) {
+		return dao.doesTestBelongToUser(test);
 	}
 
 	private void evaluateAnswer(RiddleTestAnswer entity) {
