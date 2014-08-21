@@ -2,20 +2,19 @@ package com.sifionsolution.codex.controller;
 
 import static com.sifionsolution.codex.enums.Role.LOGGED_IN;
 
-import java.util.ResourceBundle;
-
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.validator.I18nMessage;
 
+import com.sifionsolution.codex.message.MessageProvider;
 import com.sifionsolution.codex.model.RiddleTest;
 import com.sifionsolution.codex.model.wrapper.RiddleWrapper;
 import com.sifionsolution.codex.riddle.test.RiddleTestControl;
 import com.sifionsolution.codex.security.AllowTo;
+import com.sifionsolution.commons.ContentVerifyer;
 
 @Controller
 @AllowTo(LOGGED_IN)
@@ -28,23 +27,17 @@ public class RiddleTestController {
 	private RiddleTestControl control;
 
 	@Inject
-	private ResourceBundle bundle;
+	private MessageProvider messageProvider;
 
 	@Get("/test")
 	public void index() {
 		RiddleTest actual = control.getCurrent();
 
 		if (actual == null) {
-
-			// TODO extract this bundle setting to elsewhere
-			I18nMessage msg = new I18nMessage("", "riddle.no.riddles.available");
-			msg.setBundle(bundle);
-
-			result.include("msg", msg);
+			result.include("msg", messageProvider.getMessage("riddle.no.riddles.available"));
 		} else {
 			result.include("riddle", new RiddleWrapper(actual.getRiddle()));
 		}
-
 	}
 
 	@Post("/test/answer")
@@ -54,7 +47,13 @@ public class RiddleTestController {
 		if (control.isSolved()) {
 			result.redirectTo(RiddleTestController.class).survey(control.getCurrent());
 		} else {
-			result.include("clue", control.getClue());
+			String clue = control.getClue();
+
+			if (ContentVerifyer.notEmpty(clue)) {
+				result.include("clue", clue);
+			} else {
+				result.include("wrong", messageProvider.randomWrongAnswerMessage());
+			}
 
 			result.redirectTo(RiddleTestController.class).index();
 		}

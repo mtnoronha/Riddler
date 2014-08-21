@@ -28,6 +28,13 @@
 						   ${clue}<br />
 						</div>
 					</c:if>
+
+					<c:if test="${wrong != null}">
+						<div class="alert alert-danger" role="alert">
+						   ${wrong.message}<br />
+						</div>
+					</c:if>
+
 					
 					<form role="form" class="${riddle == null? 'hidden' : '' }" action="${linkTo[RiddleTestController].answer}" method="post">
 						<div class="form-group">
