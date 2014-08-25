@@ -15,6 +15,8 @@
 		<div class="container">
 			<div class="row">
 				<a href="${linkTo[RiddleController].list}" class="btn btn-info btn-lg">${i18n.admin.shortcut.riddles}</a>
+				<a href="${linkTo[UserController].list}" class="btn btn-info btn-lg">${i18n.admin.shortcut.users}</a>
+
 			</div>
 		</div>
 		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
