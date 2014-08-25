@@ -17,9 +17,9 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th class="col-sm-1">${i18n.label.name}</th>
-							<th class="col-sm-1">${i18n.label.username}</th>
-							<th class="col-sm-10">${i18n.label.email}</th>
+							<th class="col-sm-4">${i18n.label.name}</th>
+							<th class="col-sm-4">${i18n.label.username}</th>
+							<th class="col-sm-4">${i18n.label.email}</th>
 						</tr>											
 					</thead>
 					<tbody id="clueTableContent">
