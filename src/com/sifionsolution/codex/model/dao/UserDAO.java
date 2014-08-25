@@ -1,5 +1,7 @@
 package com.sifionsolution.codex.model.dao;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -54,5 +56,9 @@ public class UserDAO {
 	public boolean containsUserWith(String username, String email) {
 		return (User) dao.uniqueResultByHql("select u from User u where (u.username = :username OR u.email = :email)",
 				new HqlParameter("username", username), new HqlParameter("email", email)) != null;
+	}
+
+	public List<User> listAll() {
+		return dao.findAll();
 	}
 }
