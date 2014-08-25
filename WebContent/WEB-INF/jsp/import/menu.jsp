@@ -24,6 +24,10 @@
 				<c:if test="${userWeb.loggedIn}">
 					<li><a href="${linkTo[RiddleTestController].index}">${i18n.menu.riddle.test}</a></li>
 
+					<c:if test="${userWeb.admin}">
+						<li><a href="${linkTo[AdminController].index}">${i18n.menu.admin}</a></li>
+					</c:if>
+
 					<c:if test="${userWeb.moderator or userWeb.admin}">
 						<li><a href="${linkTo[RiddleController].list}">${i18n.menu.riddles}</a></li>
 					</c:if>
