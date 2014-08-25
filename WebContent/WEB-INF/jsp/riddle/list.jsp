@@ -20,6 +20,7 @@
 					<thead>
 						<tr>
 							<th class="col-sm-1">${i18n.label.id}</th>
+							<th class="col-sm-1">${i18n.label.level}</th>
 							<th class="col-sm-10">${i18n.label.description}</th>
 							<th class="col-sm-1"></th>
 							<th class="col-sm-1"></th>						
@@ -29,6 +30,7 @@
 						<c:forEach var="riddle" items="${riddles}">
 							<tr>
 								<td>${riddle.id}</td>
+								<td>${riddle.level}</td>
 								<td>${riddle.description}</td>
 								<td><a href="${linkTo[RiddleController].index(riddle.id)}" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a></td>
 								<td><a href="${linkTo[RiddleController].remove(riddle.id)}" class="btn btn-info"><span class="glyphicon glyphicon-remove"></span></a></td>
