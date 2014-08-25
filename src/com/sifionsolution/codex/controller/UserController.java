@@ -25,8 +25,8 @@ public class UserController {
 	@Inject
 	private UserWrapperBuilder builder;
 
-	@Get("/admin")
-	public void index() {
+	@Get("/users")
+	public void list() {
 		result.include("users", builder.build(dao.listAll()));
 	}
 }
