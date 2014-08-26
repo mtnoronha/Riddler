@@ -29,6 +29,13 @@
 					<div id="overallChart" data-url="${linkTo[AnalysisController].overall}"></div>
 				</div>
 			</div>
+			
+			<div class="row">
+				<div class="col-lg-12">
+					<div id="timeChart"></div>
+				</div>
+			</div>
+			
 		</div>
 		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -42,9 +49,6 @@
 		    // Load the Visualization API and the piechart package.
 		    google.load('visualization', '1', {'packages':['corechart']});
 		      
-		    // Set a callback to run when the Google Visualization API is loaded.
-			//google.setOnLoadCallback(drawAll(1));
-
 		    select.on('change', function () {
 		    	var value =	select.val();
 		    	
@@ -52,24 +56,35 @@
 		    		drawAll(value);		        
 		    });
 		    
-		    var overallChart = $('#overallChart');
-
+		    var overallChartContainer = $('#overallChart');
+		    var timeChartContainer = $('#timeChart');
+		    
 		    function drawAll(riddle){
 				console.log(riddle);
 	
 				$.ajax({
-			        url: overallChart.data('url')+riddle,
+			        url: overallChartContainer.data('url')+riddle,
 			        dataType:"json",
 			        async: false,
 			        success: function(data){			        
-						console.log(data);
+						var overall = data.overall;
+				        var time = data.time;
 
-						//Overall Chart						
-				    	var overallData = JSON.stringify(data.overall);
-				          
-				        var data = new google.visualization.DataTable(overallData);		
-				        var chart = new google.visualization.BarChart(overallChart[0]);
-				        chart.draw(data, {title: 'Overall'});			    	
+				        //Overall Chart			
+				        var overallJson = JSON.stringify(overall);
+				    	
+
+						var data = new google.visualization.DataTable(overallJson);		
+				        var chart = new google.visualization.BarChart(overallChartContainer[0]);
+				        chart.draw(data, {title: 'Overall'});		
+				        
+				        //Time Chart 
+				        var timeJson = JSON.stringify(time);
+				        
+				        var timeData = new google.visualization.DataTable(timeJson);		
+				        var timeChart = new google.visualization.BarChart(timeChartContainer[0]);
+				        timeChart.draw(timeData, {title: 'Time spent'});		
+
 			        }
 		        });				
 		    };
