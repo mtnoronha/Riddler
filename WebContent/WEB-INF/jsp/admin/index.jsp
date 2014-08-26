@@ -16,6 +16,7 @@
 			<div class="row">
 				<a href="${linkTo[RiddleController].list}" class="btn btn-info btn-lg">${i18n.admin.shortcut.riddles}</a>
 				<a href="${linkTo[UserController].list}" class="btn btn-info btn-lg">${i18n.admin.shortcut.users}</a>
+				<a href="${linkTo[AnalysisController].index}" class="btn btn-info btn-lg">${i18n.admin.shortcut.analysis}</a>
 
 			</div>
 		</div>
