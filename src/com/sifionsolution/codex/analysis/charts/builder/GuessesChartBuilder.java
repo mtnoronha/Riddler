@@ -36,8 +36,7 @@ public class GuessesChartBuilder {
 		Integer numberOfGuesses = test.numberOfAnswers();
 		guessesSum = guessesSum.add(new BigDecimal(numberOfGuesses));
 
-		// FIXME demeter law should be applied
-		chartBuilder.addRow(new ChartCell(test.getUser().getUsername(), null), new ChartCell(numberOfGuesses, null));
+		chartBuilder.addRow(new ChartCell(test.getUsername(), null), new ChartCell(numberOfGuesses, null));
 	}
 
 	public ChartWrapper build() {

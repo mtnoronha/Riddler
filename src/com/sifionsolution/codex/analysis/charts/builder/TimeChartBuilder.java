@@ -39,9 +39,8 @@ public class TimeChartBuilder {
 		Duration duration = new Duration(test.getStart(), test.getEnd());
 		durationSum = durationSum.add(new BigDecimal(duration.getMillis()));
 
-		// FIXME demeter law should be applied
-		chartBuilder.addRow(new ChartCell(test.getUser().getUsername(), null),
-				new ChartCell(duration.getStandardMinutes(), null));
+		chartBuilder
+				.addRow(new ChartCell(test.getUsername(), null), new ChartCell(duration.getStandardMinutes(), null));
 	}
 
 	public ChartWrapper build() {
