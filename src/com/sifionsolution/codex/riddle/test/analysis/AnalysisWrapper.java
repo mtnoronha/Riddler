@@ -1,5 +1,7 @@
 package com.sifionsolution.codex.riddle.test.analysis;
 
+import java.util.List;
+
 import com.sifionsolution.codex.google.charts.ChartWrapper;
 
 public class AnalysisWrapper {
@@ -7,11 +9,14 @@ public class AnalysisWrapper {
 	private ChartWrapper overall;
 	private ChartWrapper time;
 	private ChartWrapper guesses;
+	private List<UserFeedbackWrapper> feedbacks;
 
-	public AnalysisWrapper(ChartWrapper overall, ChartWrapper time, ChartWrapper guesses) {
+	public AnalysisWrapper(ChartWrapper overall, ChartWrapper time, ChartWrapper guesses,
+			List<UserFeedbackWrapper> feedbacks) {
 		this.overall = overall;
 		this.time = time;
 		this.guesses = guesses;
+		this.feedbacks = feedbacks;
 	}
 
 	public ChartWrapper getOverall() {
@@ -24,6 +29,10 @@ public class AnalysisWrapper {
 
 	public ChartWrapper getGuesses() {
 		return guesses;
+	}
+
+	public List<UserFeedbackWrapper> getFeedbacks() {
+		return feedbacks;
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.sifionsolution.codex.analysis.wrapper.builder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -11,6 +12,7 @@ import com.sifionsolution.codex.analysis.charts.builder.TimeChartBuilder;
 import com.sifionsolution.codex.google.charts.ChartWrapper;
 import com.sifionsolution.codex.model.RiddleTest;
 import com.sifionsolution.codex.riddle.test.analysis.AnalysisWrapper;
+import com.sifionsolution.codex.riddle.test.analysis.UserFeedbackWrapper;
 
 @RequestScoped
 public class AnalysisWrapperBuilder {
@@ -25,9 +27,9 @@ public class AnalysisWrapperBuilder {
 	private GuessesChartBuilder guessesChartBuilder;
 
 	public AnalysisWrapper build(List<RiddleTest> tests) {
+		List<UserFeedbackWrapper> feedbacks = new ArrayList<UserFeedbackWrapper>();
 
 		Integer total = tests.size();
-		Integer feedbacks = 0;
 		Integer solved = 0;
 		Integer gaveups = 0;
 
@@ -38,8 +40,9 @@ public class AnalysisWrapperBuilder {
 			timeChartBuilder.compute(test);
 			guessesChartBuilder.compute(test);
 
-			if (test.getComment() != null)
-				feedbacks++;
+			if (test.getComment() != null) {
+				feedbacks.add(new UserFeedbackWrapper(test.getUsername(), test.getComment()));
+			}
 
 			if (test.getSolved() == true)
 				solved++;
@@ -48,14 +51,14 @@ public class AnalysisWrapperBuilder {
 		}
 
 		// Creating charts
-		ChartWrapper overall = overallChartBuilder.numberOfTests(total).withFeedbacks(feedbacks).wasSolved(solved)
-				.wasGivinUp(gaveups).build();
+		ChartWrapper overall = overallChartBuilder.numberOfTests(total).withFeedbacks(feedbacks.size())
+				.wasSolved(solved).wasGivinUp(gaveups).build();
 
 		ChartWrapper time = timeChartBuilder.build();
 
 		ChartWrapper guesses = guessesChartBuilder.build();
 
-		return new AnalysisWrapper(overall, time, guesses);
+		return new AnalysisWrapper(overall, time, guesses, feedbacks);
 	}
 
 }
