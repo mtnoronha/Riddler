@@ -1,6 +1,5 @@
 package com.sifionsolution.codex.model.wrapper;
 
-
 public class SelectOneWrapper {
 
 	private final String value;
@@ -11,7 +10,7 @@ public class SelectOneWrapper {
 		this.label = label;
 	}
 
-	public String getId() {
+	public String getValue() {
 		return value;
 	}
 
