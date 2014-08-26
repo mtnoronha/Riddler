@@ -40,6 +40,14 @@
 					<div id="guessesChart"></div>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="well well-small">	
+						<h1>User feedback</h1>				
+						<div id="feedbackArea"></div>
+					</div>
+				</div>
+			</div>
 			
 		</div>
 		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -65,6 +73,8 @@
 		    var timeChartContainer = $('#timeChart');
 		    var guessesChartContainer = $('#guessesChart');
 
+		    var feedbackContainer = $('#feedbackArea');
+		    
 		    function drawAll(riddle){
 				console.log(riddle);
 	
@@ -76,7 +86,21 @@
 						var overall = data.overall;
 				        var time = data.time;
 						var guesses = data.guesses;
+						var feedbacks = data.feedbacks;
 						
+						feedbackContainer.empty();
+						var quotes = [];
+						for(var i = 0; i < feedbacks.length; i++){
+							var feedback = feedbacks[i];
+							var feedbackText = $('<p>').html(feedback.feedback);
+							var userText  = $('<footer>').html(feedback.user);
+							
+							var quote = $('<blockquote>').append(feedbackText).append(userText);							
+							quotes.push(quote);
+						}
+						
+						feedbackContainer.append(quotes);
+							
 				        //Overall Chart			
 				        var overallJson = JSON.stringify(overall);
 				    	
