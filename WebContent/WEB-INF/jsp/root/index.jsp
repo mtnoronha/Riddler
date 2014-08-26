@@ -18,8 +18,8 @@
 					<h1>Welcome to <b>Codex</b></h1>
 					<hr>
 					<br>
-					<p>We need your help. Your job is to crack our riddles and give us some feedback</p>
-					<p>This is our testing environment for our riddles. Thus, there will be no points or ranking in this enviroment.</p>
+					<p>We need your help. Your job is to figure out the logic behind each question and give us some feedback. </p>
+					<p>This is our testing environment for our questions. Thus, there will be no points or ranking in this enviroment.</p>
 					<p>Are you up for the challenge? We hope you have fun.</p>
 				</div>			
 			</div>
