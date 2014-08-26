@@ -35,6 +35,11 @@
 					<div id="timeChart"></div>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div id="guessesChart"></div>
+				</div>
+			</div>
 			
 		</div>
 		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -58,7 +63,8 @@
 		    
 		    var overallChartContainer = $('#overallChart');
 		    var timeChartContainer = $('#timeChart');
-		    
+		    var guessesChartContainer = $('#guessesChart');
+
 		    function drawAll(riddle){
 				console.log(riddle);
 	
@@ -69,7 +75,8 @@
 			        success: function(data){			        
 						var overall = data.overall;
 				        var time = data.time;
-
+						var guesses = data.guesses;
+						
 				        //Overall Chart			
 				        var overallJson = JSON.stringify(overall);
 				    	
@@ -83,7 +90,14 @@
 				        
 				        var timeData = new google.visualization.DataTable(timeJson);		
 				        var timeChart = new google.visualization.BarChart(timeChartContainer[0]);
-				        timeChart.draw(timeData, {title: 'Time spent'});		
+				        timeChart.draw(timeData, {title: 'Time spent'});	
+				        
+				        //Guesses Chart 
+				        var guessesJson = JSON.stringify(guesses);
+				        
+				        var guessesData = new google.visualization.DataTable(guessesJson);		
+				        var guessesChart = new google.visualization.BarChart(guessesChartContainer[0]);
+				        guessesChart.draw(guessesData, {title: 'Number of Answers'});
 
 			        }
 		        });				
