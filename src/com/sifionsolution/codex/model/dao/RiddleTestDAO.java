@@ -48,6 +48,13 @@ public class RiddleTestDAO {
 	}
 
 	@SuppressWarnings("unchecked")
+	public List<RiddleTest> getCompletedTestsFor(Riddle riddle) {
+		return (List<RiddleTest>) dao.listByHql(
+				"Select rt from RiddleTest rt where rt.end is not null AND rt.riddle = :riddçe", new HqlParameter(
+						"eiddle", riddle));
+	}
+
+	@SuppressWarnings("unchecked")
 	public RiddleTest getCurrentTest() {
 		List<RiddleTest> list = (List<RiddleTest>) dao.listByHql(
 				"Select rt from RiddleTest rt where rt.end is null AND rt.user.username = :user", new HqlParameter(
