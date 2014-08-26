@@ -20,7 +20,9 @@
 						<c:forEach items="${riddles}" var="riddle">
 							<option value="${riddle.value}">${riddle.label}</option>
 						</c:forEach>
-					</select>										
+					</select>		
+					<br>
+					<button id="btnNext" type="button" class="btn btn-lg btn-success">Next</button>								
 				</div>
 			</div>
 			
@@ -58,10 +60,17 @@
 		<script type="text/javascript">
 		    
 			var select = $('#riddleSelection');
-		
+			var next = $('#btnNext');			
+			
 		    // Load the Visualization API and the piechart package.
 		    google.load('visualization', '1', {'packages':['corechart']});
-		      
+
+		    next.on('click', function(){
+		    	select.find('option:selected').removeAttr('selected').next().attr('selected', 'selected');
+		    	select.change();
+		    });
+		    
+	    
 		    select.on('change', function () {
 		    	var value =	select.val();
 		    	
