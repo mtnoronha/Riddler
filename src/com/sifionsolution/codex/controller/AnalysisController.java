@@ -12,6 +12,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.view.Results;
 
+import com.sifionsolution.codex.analysis.wrapper.builder.AnalysisWrapperBuilder;
 import com.sifionsolution.codex.google.charts.ChartCell;
 import com.sifionsolution.codex.google.charts.ChartColumn;
 import com.sifionsolution.codex.google.charts.ChartWrapper;
@@ -36,6 +37,9 @@ public class AnalysisController {
 	@Inject
 	private RiddleSelectBuilder builder;
 
+	@Inject
+	private AnalysisWrapperBuilder analysisBuilder;
+
 	@Get("/analysis")
 	public void index() {
 		result.include("riddles", builder.build(dao.listRiddles()));
@@ -45,32 +49,8 @@ public class AnalysisController {
 	public void overall(Riddle riddle) {
 		List<RiddleTest> tests = dao.testsFor(riddle);
 
-		// FIXME chart creation needs to be delegated
-		ChartBuilder chartBuilder = new ChartBuilder();
+		AnalysisWrapper wrapper = analysisBuilder.build(tests);
 
-		chartBuilder.addColumn(new ChartColumn("", "Description", "", "string"));
-		chartBuilder.addColumn(new ChartColumn("", "Quantity", "", "number"));
-
-		chartBuilder.addRow(new ChartCell("Total", null), new ChartCell(tests.size(), null));
-		Integer feedbacks = 0;
-		Integer solved = 0;
-		Integer gaviups = 0;
-
-		for (RiddleTest test : tests) {
-			if (test.getComment() != null)
-				feedbacks++;
-
-			if (test.getSolved() == true)
-				solved++;
-			else
-				gaviups++;
-		}
-
-		chartBuilder.addRow(new ChartCell("Solved", null), new ChartCell(solved, null));
-		chartBuilder.addRow(new ChartCell("Gaviups", null), new ChartCell(gaviups, null));
-		chartBuilder.addRow(new ChartCell("With feedback", null), new ChartCell(feedbacks, null));
-
-		AnalysisWrapper wrapper = new AnalysisWrapper(chartBuilder.build());
 		result.use(json()).withoutRoot().from(wrapper).recursive().serialize();
 
 	}
