@@ -3,43 +3,49 @@ package com.sifionsolution.codex.analysis.wrapper.builder;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
-import com.sifionsolution.codex.google.charts.ChartCell;
-import com.sifionsolution.codex.google.charts.ChartColumn;
-import com.sifionsolution.codex.google.charts.builder.ChartBuilder;
+import com.sifionsolution.codex.analysis.charts.builder.OverallChartBuilder;
+import com.sifionsolution.codex.analysis.charts.builder.TimeChartBuilder;
+import com.sifionsolution.codex.google.charts.ChartWrapper;
 import com.sifionsolution.codex.model.RiddleTest;
 import com.sifionsolution.codex.riddle.test.analysis.AnalysisWrapper;
 
 @RequestScoped
 public class AnalysisWrapperBuilder {
 
+	@Inject
+	private TimeChartBuilder timeChartBuilder;
+
+	@Inject
+	private OverallChartBuilder overallChartBuilder;
+
 	public AnalysisWrapper build(List<RiddleTest> tests) {
-		ChartBuilder chartBuilder = new ChartBuilder();
 
-		chartBuilder.addColumn(new ChartColumn("", "Description", "", "string"));
-		chartBuilder.addColumn(new ChartColumn("", "Quantity", "", "number"));
-
-		chartBuilder.addRow(new ChartCell("Total", null), new ChartCell(tests.size(), null));
+		Integer total = tests.size();
 		Integer feedbacks = 0;
 		Integer solved = 0;
-		Integer gaviups = 0;
+		Integer gaveups = 0;
 
 		for (RiddleTest test : tests) {
+			timeChartBuilder.compute(test);
+
 			if (test.getComment() != null)
 				feedbacks++;
 
 			if (test.getSolved() == true)
 				solved++;
 			else
-				gaviups++;
+				gaveups++;
 		}
 
-		chartBuilder.addRow(new ChartCell("Solved", null), new ChartCell(solved, null));
-		chartBuilder.addRow(new ChartCell("Gaviups", null), new ChartCell(gaviups, null));
-		chartBuilder.addRow(new ChartCell("With feedback", null), new ChartCell(feedbacks, null));
+		// Creating charts
+		ChartWrapper overall = overallChartBuilder.numberOfTests(total).withFeedbacks(feedbacks).wasSolved(solved)
+				.wasGivinUp(gaveups).build();
 
-		AnalysisWrapper wrapper = new AnalysisWrapper(chartBuilder.build());
-		return wrapper;
+		ChartWrapper time = timeChartBuilder.build();
+
+		return new AnalysisWrapper(overall, time);
 	}
 
 }
