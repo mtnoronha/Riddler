@@ -43,6 +43,11 @@ public class RiddleController {
 		}
 	}
 
+	@Get("/riddle/clone/{riddle}")
+	public void clone(Riddle riddle) {
+		result.redirectTo(RiddleController.class).index(riddle.getNewEntityClone());
+	}
+
 	@Get("/riddles")
 	public void list() {
 		result.include("riddles", dao.list());

@@ -88,7 +88,7 @@ public class RiddleTestDAO {
 	}
 
 	private RiddleTest createRiddleTest(Riddle riddle) {
-		RiddleTest test = new RiddleTest(null, now(), null, null, null, riddle, getUser());
+		RiddleTest test = new RiddleTest(null, now(), null, null, null, riddle, getUser(), null);
 		dao.save(test);
 		return test;
 	}

@@ -104,4 +104,9 @@ public class Riddle {
 	public List<Clue> getClues() {
 		return clues;
 	}
+
+	// FIXME bad method name
+	public Riddle getNewEntityClone() {
+		return new Riddle(null, description, answer, reward, level, clues);
+	}
 }

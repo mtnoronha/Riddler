@@ -32,6 +32,7 @@
 								<td>${riddle.id}</td>
 								<td>${riddle.level}</td>
 								<td>${riddle.description}</td>
+								<td><a href="${linkTo[RiddleController].clone(riddle.id)}" class="btn btn-info"><span class="glyphicon glyphicon-transfer"></span></a></td>
 								<td><a href="${linkTo[RiddleController].index(riddle.id)}" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a></td>
 								<td><a href="${linkTo[RiddleController].remove(riddle.id)}" class="btn btn-info"><span class="glyphicon glyphicon-remove"></span></a></td>
 							</tr>
