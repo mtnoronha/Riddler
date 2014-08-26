@@ -50,8 +50,8 @@ public class RiddleTestDAO {
 	@SuppressWarnings("unchecked")
 	public List<RiddleTest> getCompletedTestsFor(Riddle riddle) {
 		return (List<RiddleTest>) dao.listByHql(
-				"Select rt from RiddleTest rt where rt.end is not null AND rt.riddle = :riddçe", new HqlParameter(
-						"eiddle", riddle));
+				"Select rt from RiddleTest rt where rt.end is not null AND rt.riddle = :riddle", new HqlParameter(
+						"riddle", riddle));
 	}
 
 	@SuppressWarnings("unchecked")
