@@ -118,4 +118,8 @@ public class RiddleTest {
 		this.comment = comment;
 	}
 
+	public String getUsername() {
+		return user.getUsername();
+	}
+
 }
