@@ -18,12 +18,4 @@ public class UserFeedbackWrapper {
 		return feedback;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
-	}
-
-	public void setFeedback(String feedback) {
-		this.feedback = feedback;
-	}
-
 }
