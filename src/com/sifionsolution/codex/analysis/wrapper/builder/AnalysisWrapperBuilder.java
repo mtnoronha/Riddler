@@ -27,6 +27,8 @@ public class AnalysisWrapperBuilder {
 		Integer solved = 0;
 		Integer gaveups = 0;
 
+		timeChartBuilder.withTotal(total);
+
 		for (RiddleTest test : tests) {
 			timeChartBuilder.compute(test);
 

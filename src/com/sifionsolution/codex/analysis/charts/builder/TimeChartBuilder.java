@@ -19,7 +19,7 @@ public class TimeChartBuilder {
 
 	private BigDecimal durationSum;
 	private Integer total;
-	ChartBuilder chartBuilder;
+	private ChartBuilder chartBuilder;
 
 	@PostConstruct
 	public void init() {
