@@ -1,5 +1,7 @@
 package com.sifionsolution.codex.analysis.charts.builder;
 
+import static java.math.RoundingMode.HALF_UP;
+
 import java.math.BigDecimal;
 import java.util.concurrent.TimeUnit;
 
@@ -52,7 +54,7 @@ public class TimeChartBuilder {
 	}
 
 	private Integer calculateAverageTimeSpent() {
-		long durationAvg = durationSum.divide(new BigDecimal(total)).longValue();
+		long durationAvg = durationSum.divide(new BigDecimal(total), HALF_UP).longValue();
 		return (int) TimeUnit.MILLISECONDS.toMinutes(durationAvg);
 	}
 }

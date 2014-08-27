@@ -1,5 +1,7 @@
 package com.sifionsolution.codex.analysis.charts.builder;
 
+import static java.math.RoundingMode.HALF_UP;
+
 import java.math.BigDecimal;
 
 import javax.annotation.PostConstruct;
@@ -40,7 +42,7 @@ public class GuessesChartBuilder {
 	}
 
 	public ChartWrapper build() {
-		Integer avgGuesses = (int) guessesSum.divide(new BigDecimal(total)).longValue();
+		Integer avgGuesses = (int) guessesSum.divide(new BigDecimal(total), HALF_UP).longValue();
 
 		chartBuilder.addRow(new ChartCell("Average", null), new ChartCell(avgGuesses, null));
 		return chartBuilder.build();
