@@ -50,6 +50,15 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="well well-small">	
+						<h1>Answers</h1>				
+						<div id="answerArea"></div>
+					</div>
+				</div>
+			</div>
 			
 		</div>
 		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -83,10 +92,9 @@
 		    var guessesChartContainer = $('#guessesChart');
 
 		    var feedbackContainer = $('#feedbackArea');
+		    var answerContainer = $('#answerArea');
 		    
-		    function drawAll(riddle){
-				console.log(riddle);
-	
+		    function drawAll(riddle){	
 				$.ajax({
 			        url: overallChartContainer.data('url')+riddle,
 			        dataType:"json",
@@ -96,7 +104,10 @@
 				        var time = data.time;
 						var guesses = data.guesses;
 						var feedbacks = data.feedbacks;
+						var answers = data.answers;
 						
+						
+						//Feedback details
 						feedbackContainer.empty();
 						var quotes = [];
 						for(var i = 0; i < feedbacks.length; i++){
@@ -109,7 +120,24 @@
 						}
 						
 						feedbackContainer.append(quotes);
+						
+						//Answer details
+						answerContainer.empty();
+
+						var answersArray = [];
+						for(var i = 0; i < answers.length; i++){
+							var answer = answers[i];
+							var text = $('<h3>').addClass(answer.background).html(answer.answer);
+							var times  = $('<span>').addClass('badge').html(answer.timesGuessed);
 							
+							text.append(times);
+							
+							answersArray.push(text);
+						}
+						
+						answerContainer.append(answersArray);
+
+						
 				        //Overall Chart			
 				        var overallJson = JSON.stringify(overall);
 				    	

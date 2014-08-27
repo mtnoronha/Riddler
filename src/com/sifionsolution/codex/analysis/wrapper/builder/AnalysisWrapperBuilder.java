@@ -6,9 +6,11 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import com.sifionsolution.codex.analysis.AnswerAnalysisBuilder;
 import com.sifionsolution.codex.analysis.charts.builder.GuessesChartBuilder;
 import com.sifionsolution.codex.analysis.charts.builder.OverallChartBuilder;
 import com.sifionsolution.codex.analysis.charts.builder.TimeChartBuilder;
+import com.sifionsolution.codex.analysis.wrapper.AnswerAnalysisWrapper;
 import com.sifionsolution.codex.google.charts.ChartWrapper;
 import com.sifionsolution.codex.model.RiddleTest;
 import com.sifionsolution.codex.riddle.test.analysis.AnalysisWrapper;
@@ -26,6 +28,9 @@ public class AnalysisWrapperBuilder {
 	@Inject
 	private GuessesChartBuilder guessesChartBuilder;
 
+	@Inject
+	private AnswerAnalysisBuilder answerBuilder;
+
 	public AnalysisWrapper build(List<RiddleTest> tests) {
 		List<UserFeedbackWrapper> feedbacks = new ArrayList<UserFeedbackWrapper>();
 
@@ -39,6 +44,7 @@ public class AnalysisWrapperBuilder {
 		for (RiddleTest test : tests) {
 			timeChartBuilder.compute(test);
 			guessesChartBuilder.compute(test);
+			answerBuilder.compute(test);
 
 			if (test.getComment() != null) {
 				feedbacks.add(new UserFeedbackWrapper(test.getUsername(), test.getComment()));
@@ -58,7 +64,9 @@ public class AnalysisWrapperBuilder {
 
 		ChartWrapper guesses = guessesChartBuilder.build();
 
-		return new AnalysisWrapper(overall, time, guesses, feedbacks);
+		List<AnswerAnalysisWrapper> answers = answerBuilder.build();
+
+		return new AnalysisWrapper(overall, time, guesses, feedbacks, answers);
 	}
 
 }

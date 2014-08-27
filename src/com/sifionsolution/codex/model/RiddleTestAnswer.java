@@ -1,5 +1,7 @@
 package com.sifionsolution.codex.model;
 
+import static com.sifionsolution.commons.ContentVerifyer.notEmpty;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,6 +40,10 @@ public class RiddleTestAnswer {
 
 	public boolean isCorrectAnswer() {
 		return riddleTest.checkAnswer(answer);
+	}
+
+	public boolean isClueUnlocker() {
+		return notEmpty(findClue());
 	}
 
 	public String findClue() {
