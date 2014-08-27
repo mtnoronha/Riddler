@@ -54,7 +54,8 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="well well-small">	
-						<h1>Answers</h1>				
+						<h1>Answers</h1>
+						<div id="answersChart"></div>				
 						<div id="answerArea"></div>
 					</div>
 				</div>
@@ -90,7 +91,8 @@
 		    var overallChartContainer = $('#overallChart');
 		    var timeChartContainer = $('#timeChart');
 		    var guessesChartContainer = $('#guessesChart');
-
+			var answersChartContainer = $('#answersChart');
+			
 		    var feedbackContainer = $('#feedbackArea');
 		    var answerContainer = $('#answerArea');
 		    
@@ -122,11 +124,17 @@
 						feedbackContainer.append(quotes);
 						
 						//Answer details
+						var answerChartData = [];
+						answerChartData.push(["Answer", "Times Guessed"]);
+						
 						answerContainer.empty();
 
 						var answersArray = [];
 						for(var i = 0; i < answers.length; i++){
 							var answer = answers[i];
+
+							answerChartData.push([answer.answer, answer.timesGuessed]);
+
 							var text = $('<h3>').addClass(answer.background).html(answer.answer);
 							var times  = $('<span>').addClass('badge').html(answer.timesGuessed);
 							
@@ -141,7 +149,6 @@
 				        //Overall Chart			
 				        var overallJson = JSON.stringify(overall);
 				    	
-
 						var data = new google.visualization.DataTable(overallJson);		
 				        var chart = new google.visualization.BarChart(overallChartContainer[0]);
 				        chart.draw(data, {title: 'Overall'});		
@@ -160,6 +167,10 @@
 				        var guessesChart = new google.visualization.BarChart(guessesChartContainer[0]);
 				        guessesChart.draw(guessesData, {title: 'Number of Answers'});
 
+				        //Answer Chart
+				        var answersChart = new google.visualization.BarChart(answersChartContainer[0]);
+				        answersChart.draw( google.visualization.arrayToDataTable(answerChartData), {title: 'Guesses per Answers'});
+				        
 			        }
 		        });				
 		    };
