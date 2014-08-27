@@ -168,7 +168,7 @@
 				        guessesChart.draw(guessesData, {title: 'Number of Answers'});
 
 				        //Answer Chart
-				        var answersChart = new google.visualization.BarChart(answersChartContainer[0]);
+				        var answersChart = new google.visualization.PieChart(answersChartContainer[0]);
 				        answersChart.draw( google.visualization.arrayToDataTable(answerChartData), {title: 'Guesses per Answers'});
 				        
 			        }
